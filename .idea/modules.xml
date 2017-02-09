@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/lenguajesCompilador.iml" filepath="$PROJECT_DIR$/.idea/lenguajesCompilador.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/lenguajesCompilador-master.iml" filepath="$PROJECT_DIR$/.idea/lenguajesCompilador-master.iml" />
     </modules>
   </component>
 </project>

@@ -1,28 +1,11 @@
 import ply.lex as lex
 
 tokens = (
-    'VARIABLE','LPAREN', 'RPAREN',
-    'NUMBERS','PLUS','BOOLEAN',
+    'IMPORT', 'AS',
+    'NUMPY', 'VARIABLE', 'EQUALS', 'ARRAY',
+    'LPAREN', 'RPAREN','NUMBERS','PLUS','ZEROS','BOOLEAN',
+    'SHAPE','RESHAPE','SIZE'
 )
-
-reserved = {
-    'import' : 'IMPORT',
-    'as' : 'AS',
-    'numpy' : 'NUMPY',
-    'equals' : 'EQUALS',
-    'array' : 'ARRAY',
-    'zeros' : 'ZEROS',
-    'shape' : 'SHAPE',
-    'reshape' : 'RESHAPE',
-    'size' : 'SIZE'
-}
-
-tokens = ['LPAREN','RPAREN',...,'ID'] + list(reserved.values())
-
-def t_ID(t):
-    r'[a-zA-Z_][a-zA-Z_0-9]*'
-    t.type = reserved.get(t.value,'ID')    # Check for reserved words
-    return t
 
 # Tokens
 t_VARIABLE = r'[a-zA-Z_][a-zA-Z0-9_]*'
@@ -40,8 +23,6 @@ t_BOOLEAN = r'>|<|==|!='
 t_SHAPE = r'shape'
 t_RESHAPE = r'reshape'
 t_SIZE = r'size'
-
-
 
 # Define a rule so we can track line numbers
 def t_newline(t):
@@ -75,7 +56,4 @@ while True:
     if not tok:
         break      # No more input
     print(tok)
-
-
-
 
