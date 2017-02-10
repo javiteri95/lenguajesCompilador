@@ -5,9 +5,9 @@ _tabversion = '3.8'
 
 _lr_method = 'LALR'
 
-_lr_signature = 'B56BB54EED905C7A007F5DB0770D981A'
+_lr_signature = '9A44BCF08B268AB20027AF0548474309'
     
-_lr_action_items = {'BOOLEAN':([3,15,],[6,25,]),'RCORCHER':([28,35,43,51,67,],[36,42,52,59,71,]),'NUMBERS':([9,28,29,30,38,41,43,44,50,54,64,],[17,35,37,39,45,49,51,53,58,62,69,]),'ARREGLO':([3,8,40,48,63,],[8,16,47,56,67,]),'ARRAY':([27,],[33,]),'OPERADOR':([3,15,],[10,26,]),'SHAPE':([11,],[19,]),'RPAREN':([39,47,49,53,54,61,62,64,66,68,69,71,73,],[46,55,57,60,61,65,66,68,70,72,73,74,75,]),'POINT':([3,15,],[11,27,]),'IMPORT':([0,],[2,]),'RESHAPE':([11,],[20,]),'DOUBLEPOINT':([17,35,],[28,43,]),'EQUALS':([3,],[7,]),'LCORCHER':([3,40,],[9,48,]),'COMA':([37,45,56,58,],[44,54,63,64,]),'ZEROS':([11,27,],[22,34,]),'FROM':([4,],[12,]),'SIZE':([11,],[21,]),'AS':([5,],[13,]),'LPAREN':([20,22,30,33,34,41,],[29,30,38,40,41,50,]),'$end':([1,8,14,16,18,19,21,23,24,31,32,36,42,46,52,55,57,59,60,65,70,72,74,75,],[0,-7,-16,-8,-4,-17,-18,-2,-1,-15,-5,-20,-21,-12,-22,-3,-9,-23,-19,-13,-14,-10,-6,-11,]),'ID':([0,2,6,7,10,12,13,25,26,],[3,4,14,15,18,23,24,31,32,]),'NUMPY':([2,],[5,]),}
+_lr_action_items = {'EQUALS':([1,],[3,]),'ARRAY':([5,],[6,]),'ID':([0,3,],[1,4,]),'RPAREN':([8,],[9,]),'ARREGLO':([7,],[8,]),'$end':([2,9,],[0,-1,]),'LPAREN':([6,],[7,]),'POINT':([4,],[5,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -16,7 +16,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'expression':([0,],[1,]),}
+_lr_goto_items = {'expression':([0,],[2,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -26,28 +26,5 @@ for _k, _v in _lr_goto_items.items():
 del _lr_goto_items
 _lr_productions = [
   ("S' -> expression","S'",1,None,None,None),
-  ('expression -> IMPORT NUMPY AS ID','expression',4,'p_expresion_import','compiladorCompleto.py',66),
-  ('expression -> IMPORT ID FROM ID','expression',4,'p_expresion_import','compiladorCompleto.py',67),
-  ('expression -> ID EQUALS ID POINT ARRAY LPAREN ARREGLO RPAREN','expression',8,'p_expresion_arreglo','compiladorCompleto.py',77),
-  ('expression -> ID OPERADOR ID','expression',3,'p_expresion_operando','compiladorCompleto.py',89),
-  ('expression -> ID EQUALS ID OPERADOR ID','expression',5,'p_expresion_operando','compiladorCompleto.py',90),
-  ('expression -> ID EQUALS ID POINT ARRAY LPAREN LCORCHER ARREGLO COMA ARREGLO RCORCHER RPAREN','expression',12,'p_expresion_arregloBi','compiladorCompleto.py',100),
-  ('expression -> ID ARREGLO','expression',2,'p_expresion_indexacion','compiladorCompleto.py',112),
-  ('expression -> ID ARREGLO ARREGLO','expression',3,'p_expresion_indexacion','compiladorCompleto.py',113),
-  ('expression -> ID EQUALS ID POINT ZEROS LPAREN NUMBERS RPAREN','expression',8,'p_expression_zeros','compiladorCompleto.py',125),
-  ('expression -> ID EQUALS ID POINT ZEROS LPAREN LPAREN NUMBERS COMA RPAREN RPAREN','expression',11,'p_expression_zeros','compiladorCompleto.py',126),
-  ('expression -> ID EQUALS ID POINT ZEROS LPAREN LPAREN NUMBERS COMA NUMBERS RPAREN RPAREN','expression',12,'p_expression_zeros','compiladorCompleto.py',127),
-  ('expression -> ID POINT ZEROS LPAREN NUMBERS RPAREN','expression',6,'p_expression_zeros','compiladorCompleto.py',128),
-  ('expression -> ID POINT ZEROS LPAREN LPAREN NUMBERS COMA RPAREN RPAREN','expression',9,'p_expression_zeros','compiladorCompleto.py',129),
-  ('expression -> ID POINT ZEROS LPAREN LPAREN NUMBERS COMA NUMBERS RPAREN RPAREN','expression',10,'p_expression_zeros','compiladorCompleto.py',130),
-  ('expression -> ID EQUALS ID BOOLEAN ID','expression',5,'p_expression_boolean','compiladorCompleto.py',141),
-  ('expression -> ID BOOLEAN ID','expression',3,'p_expression_boolean','compiladorCompleto.py',142),
-  ('expression -> ID POINT SHAPE','expression',3,'p_expression_funciones','compiladorCompleto.py',154),
-  ('expression -> ID POINT SIZE','expression',3,'p_expression_funciones','compiladorCompleto.py',155),
-  ('expression -> ID POINT RESHAPE LPAREN NUMBERS COMA NUMBERS RPAREN','expression',8,'p_expression_funciones','compiladorCompleto.py',156),
-  ('expression -> ID LCORCHER NUMBERS DOUBLEPOINT RCORCHER','expression',5,'p_expression_slicing','compiladorCompleto.py',168),
-  ('expression -> ID LCORCHER NUMBERS DOUBLEPOINT NUMBERS RCORCHER','expression',6,'p_expression_slicing','compiladorCompleto.py',169),
-  ('expression -> ID LCORCHER NUMBERS DOUBLEPOINT NUMBERS DOUBLEPOINT RCORCHER','expression',7,'p_expression_slicing','compiladorCompleto.py',170),
-  ('expression -> ID LCORCHER NUMBERS DOUBLEPOINT NUMBERS DOUBLEPOINT NUMBERS RCORCHER','expression',8,'p_expression_slicing','compiladorCompleto.py',171),
-  ('empty -> <empty>','empty',0,'p_empty','compiladorCompleto.py',189),
+  ('expression -> ID EQUALS ID POINT ARRAY LPAREN ARREGLO RPAREN','expression',8,'p_expresion_arreglo','experimento.py',151),
 ]

@@ -76,7 +76,7 @@ def p_expresion_import(p):
 def p_expresion_arreglo(p):
     '''expression : ID EQUALS ID POINT ARRAY LPAREN ARREGLO RPAREN
                    '''
-
+    p[0] = ""
     for i in range(1,len(p)):
         p[0] += p[i]
     print(p[0])
