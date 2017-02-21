@@ -3,56 +3,50 @@ Created by PLY version 3.10 (http://www.dabeaz.com/ply)
 Unused terminals:
 
     RESHAPE
-    NUMPY
+    RCORCHER
     RPAREN
     POINT
     OPERADOR
+    LCORCHER
+    ARREGLO
     SHAPE
+    NUMBERS
     DOUBLEPOINT
-    IMPORT
     ARRAY
-    AS
+    EQUALS
     ZEROS
     LPAREN
+    COMA
     ARREGLO_BI
     SIZE
-    FROM
     BOOLEAN
 
 Grammar
 
 Rule 0     S' -> expression
-Rule 1     expression -> ID ARREGLO
-Rule 2     expression -> ID ARREGLO ARREGLO
-Rule 3     expression -> ID EQUALS ID ARREGLO
-Rule 4     expression -> ID EQUALS ID ARREGLO ARREGLO
-Rule 5     expression -> ID LCORCHER NUMBERS RCORCHER
-Rule 6     expression -> ID LCORCHER NUMBERS COMA NUMBERS RCORCHER
-Rule 7     expression -> ID LCORCHER NUMBERS RCORCHER LCORCHER NUMBERS RCORCHER
-Rule 8     expression -> ID EQUALS ID LCORCHER NUMBERS RCORCHER
-Rule 9     expression -> ID EQUALS ID LCORCHER NUMBERS COMA NUMBERS RCORCHER
-Rule 10    expression -> ID EQUALS ID LCORCHER NUMBERS RCORCHER LCORCHER NUMBERS RCORCHER
+Rule 1     expression -> IMPORT NUMPY AS ID
+Rule 2     expression -> IMPORT ID FROM ID
 
 Terminals, with rules where they appear
 
 ARRAY                : 
-ARREGLO              : 1 2 2 3 4 4
+ARREGLO              : 
 ARREGLO_BI           : 
-AS                   : 
+AS                   : 1
 BOOLEAN              : 
-COMA                 : 6 9
+COMA                 : 
 DOUBLEPOINT          : 
-EQUALS               : 3 4 8 9 10
-FROM                 : 
-ID                   : 1 2 3 3 4 4 5 6 7 8 8 9 9 10 10
-IMPORT               : 
-LCORCHER             : 5 6 7 7 8 9 10 10
+EQUALS               : 
+FROM                 : 2
+ID                   : 1 2 2
+IMPORT               : 1 2
+LCORCHER             : 
 LPAREN               : 
-NUMBERS              : 5 6 6 7 7 8 9 9 10 10
-NUMPY                : 
+NUMBERS              : 
+NUMPY                : 1
 OPERADOR             : 
 POINT                : 
-RCORCHER             : 5 6 7 7 8 9 10 10
+RCORCHER             : 
 RESHAPE              : 
 RPAREN               : 
 SHAPE                : 
@@ -69,236 +63,66 @@ Parsing method: LALR
 state 0
 
     (0) S' -> . expression
-    (1) expression -> . ID ARREGLO
-    (2) expression -> . ID ARREGLO ARREGLO
-    (3) expression -> . ID EQUALS ID ARREGLO
-    (4) expression -> . ID EQUALS ID ARREGLO ARREGLO
-    (5) expression -> . ID LCORCHER NUMBERS RCORCHER
-    (6) expression -> . ID LCORCHER NUMBERS COMA NUMBERS RCORCHER
-    (7) expression -> . ID LCORCHER NUMBERS RCORCHER LCORCHER NUMBERS RCORCHER
-    (8) expression -> . ID EQUALS ID LCORCHER NUMBERS RCORCHER
-    (9) expression -> . ID EQUALS ID LCORCHER NUMBERS COMA NUMBERS RCORCHER
-    (10) expression -> . ID EQUALS ID LCORCHER NUMBERS RCORCHER LCORCHER NUMBERS RCORCHER
+    (1) expression -> . IMPORT NUMPY AS ID
+    (2) expression -> . IMPORT ID FROM ID
 
-    ID              shift and go to state 2
+    IMPORT          shift and go to state 1
 
-    expression                     shift and go to state 1
+    expression                     shift and go to state 2
 
 state 1
+
+    (1) expression -> IMPORT . NUMPY AS ID
+    (2) expression -> IMPORT . ID FROM ID
+
+    NUMPY           shift and go to state 3
+    ID              shift and go to state 4
+
+
+state 2
 
     (0) S' -> expression .
 
 
 
-state 2
-
-    (1) expression -> ID . ARREGLO
-    (2) expression -> ID . ARREGLO ARREGLO
-    (3) expression -> ID . EQUALS ID ARREGLO
-    (4) expression -> ID . EQUALS ID ARREGLO ARREGLO
-    (5) expression -> ID . LCORCHER NUMBERS RCORCHER
-    (6) expression -> ID . LCORCHER NUMBERS COMA NUMBERS RCORCHER
-    (7) expression -> ID . LCORCHER NUMBERS RCORCHER LCORCHER NUMBERS RCORCHER
-    (8) expression -> ID . EQUALS ID LCORCHER NUMBERS RCORCHER
-    (9) expression -> ID . EQUALS ID LCORCHER NUMBERS COMA NUMBERS RCORCHER
-    (10) expression -> ID . EQUALS ID LCORCHER NUMBERS RCORCHER LCORCHER NUMBERS RCORCHER
-
-    ARREGLO         shift and go to state 4
-    EQUALS          shift and go to state 3
-    LCORCHER        shift and go to state 5
-
-
 state 3
 
-    (3) expression -> ID EQUALS . ID ARREGLO
-    (4) expression -> ID EQUALS . ID ARREGLO ARREGLO
-    (8) expression -> ID EQUALS . ID LCORCHER NUMBERS RCORCHER
-    (9) expression -> ID EQUALS . ID LCORCHER NUMBERS COMA NUMBERS RCORCHER
-    (10) expression -> ID EQUALS . ID LCORCHER NUMBERS RCORCHER LCORCHER NUMBERS RCORCHER
+    (1) expression -> IMPORT NUMPY . AS ID
 
-    ID              shift and go to state 6
+    AS              shift and go to state 5
 
 
 state 4
 
-    (1) expression -> ID ARREGLO .
-    (2) expression -> ID ARREGLO . ARREGLO
+    (2) expression -> IMPORT ID . FROM ID
 
-    $end            reduce using rule 1 (expression -> ID ARREGLO .)
-    ARREGLO         shift and go to state 7
+    FROM            shift and go to state 6
 
 
 state 5
 
-    (5) expression -> ID LCORCHER . NUMBERS RCORCHER
-    (6) expression -> ID LCORCHER . NUMBERS COMA NUMBERS RCORCHER
-    (7) expression -> ID LCORCHER . NUMBERS RCORCHER LCORCHER NUMBERS RCORCHER
+    (1) expression -> IMPORT NUMPY AS . ID
 
-    NUMBERS         shift and go to state 8
+    ID              shift and go to state 7
 
 
 state 6
 
-    (3) expression -> ID EQUALS ID . ARREGLO
-    (4) expression -> ID EQUALS ID . ARREGLO ARREGLO
-    (8) expression -> ID EQUALS ID . LCORCHER NUMBERS RCORCHER
-    (9) expression -> ID EQUALS ID . LCORCHER NUMBERS COMA NUMBERS RCORCHER
-    (10) expression -> ID EQUALS ID . LCORCHER NUMBERS RCORCHER LCORCHER NUMBERS RCORCHER
+    (2) expression -> IMPORT ID FROM . ID
 
-    ARREGLO         shift and go to state 9
-    LCORCHER        shift and go to state 10
+    ID              shift and go to state 8
 
 
 state 7
 
-    (2) expression -> ID ARREGLO ARREGLO .
+    (1) expression -> IMPORT NUMPY AS ID .
 
-    $end            reduce using rule 2 (expression -> ID ARREGLO ARREGLO .)
+    $end            reduce using rule 1 (expression -> IMPORT NUMPY AS ID .)
 
 
 state 8
 
-    (5) expression -> ID LCORCHER NUMBERS . RCORCHER
-    (6) expression -> ID LCORCHER NUMBERS . COMA NUMBERS RCORCHER
-    (7) expression -> ID LCORCHER NUMBERS . RCORCHER LCORCHER NUMBERS RCORCHER
+    (2) expression -> IMPORT ID FROM ID .
 
-    RCORCHER        shift and go to state 12
-    COMA            shift and go to state 11
-
-
-state 9
-
-    (3) expression -> ID EQUALS ID ARREGLO .
-    (4) expression -> ID EQUALS ID ARREGLO . ARREGLO
-
-    $end            reduce using rule 3 (expression -> ID EQUALS ID ARREGLO .)
-    ARREGLO         shift and go to state 13
-
-
-state 10
-
-    (8) expression -> ID EQUALS ID LCORCHER . NUMBERS RCORCHER
-    (9) expression -> ID EQUALS ID LCORCHER . NUMBERS COMA NUMBERS RCORCHER
-    (10) expression -> ID EQUALS ID LCORCHER . NUMBERS RCORCHER LCORCHER NUMBERS RCORCHER
-
-    NUMBERS         shift and go to state 14
-
-
-state 11
-
-    (6) expression -> ID LCORCHER NUMBERS COMA . NUMBERS RCORCHER
-
-    NUMBERS         shift and go to state 15
-
-
-state 12
-
-    (5) expression -> ID LCORCHER NUMBERS RCORCHER .
-    (7) expression -> ID LCORCHER NUMBERS RCORCHER . LCORCHER NUMBERS RCORCHER
-
-    $end            reduce using rule 5 (expression -> ID LCORCHER NUMBERS RCORCHER .)
-    LCORCHER        shift and go to state 16
-
-
-state 13
-
-    (4) expression -> ID EQUALS ID ARREGLO ARREGLO .
-
-    $end            reduce using rule 4 (expression -> ID EQUALS ID ARREGLO ARREGLO .)
-
-
-state 14
-
-    (8) expression -> ID EQUALS ID LCORCHER NUMBERS . RCORCHER
-    (9) expression -> ID EQUALS ID LCORCHER NUMBERS . COMA NUMBERS RCORCHER
-    (10) expression -> ID EQUALS ID LCORCHER NUMBERS . RCORCHER LCORCHER NUMBERS RCORCHER
-
-    RCORCHER        shift and go to state 17
-    COMA            shift and go to state 18
-
-
-state 15
-
-    (6) expression -> ID LCORCHER NUMBERS COMA NUMBERS . RCORCHER
-
-    RCORCHER        shift and go to state 19
-
-
-state 16
-
-    (7) expression -> ID LCORCHER NUMBERS RCORCHER LCORCHER . NUMBERS RCORCHER
-
-    NUMBERS         shift and go to state 20
-
-
-state 17
-
-    (8) expression -> ID EQUALS ID LCORCHER NUMBERS RCORCHER .
-    (10) expression -> ID EQUALS ID LCORCHER NUMBERS RCORCHER . LCORCHER NUMBERS RCORCHER
-
-    $end            reduce using rule 8 (expression -> ID EQUALS ID LCORCHER NUMBERS RCORCHER .)
-    LCORCHER        shift and go to state 21
-
-
-state 18
-
-    (9) expression -> ID EQUALS ID LCORCHER NUMBERS COMA . NUMBERS RCORCHER
-
-    NUMBERS         shift and go to state 22
-
-
-state 19
-
-    (6) expression -> ID LCORCHER NUMBERS COMA NUMBERS RCORCHER .
-
-    $end            reduce using rule 6 (expression -> ID LCORCHER NUMBERS COMA NUMBERS RCORCHER .)
-
-
-state 20
-
-    (7) expression -> ID LCORCHER NUMBERS RCORCHER LCORCHER NUMBERS . RCORCHER
-
-    RCORCHER        shift and go to state 23
-
-
-state 21
-
-    (10) expression -> ID EQUALS ID LCORCHER NUMBERS RCORCHER LCORCHER . NUMBERS RCORCHER
-
-    NUMBERS         shift and go to state 24
-
-
-state 22
-
-    (9) expression -> ID EQUALS ID LCORCHER NUMBERS COMA NUMBERS . RCORCHER
-
-    RCORCHER        shift and go to state 25
-
-
-state 23
-
-    (7) expression -> ID LCORCHER NUMBERS RCORCHER LCORCHER NUMBERS RCORCHER .
-
-    $end            reduce using rule 7 (expression -> ID LCORCHER NUMBERS RCORCHER LCORCHER NUMBERS RCORCHER .)
-
-
-state 24
-
-    (10) expression -> ID EQUALS ID LCORCHER NUMBERS RCORCHER LCORCHER NUMBERS . RCORCHER
-
-    RCORCHER        shift and go to state 26
-
-
-state 25
-
-    (9) expression -> ID EQUALS ID LCORCHER NUMBERS COMA NUMBERS RCORCHER .
-
-    $end            reduce using rule 9 (expression -> ID EQUALS ID LCORCHER NUMBERS COMA NUMBERS RCORCHER .)
-
-
-state 26
-
-    (10) expression -> ID EQUALS ID LCORCHER NUMBERS RCORCHER LCORCHER NUMBERS RCORCHER .
-
-    $end            reduce using rule 10 (expression -> ID EQUALS ID LCORCHER NUMBERS RCORCHER LCORCHER NUMBERS RCORCHER .)
+    $end            reduce using rule 2 (expression -> IMPORT ID FROM ID .)
 

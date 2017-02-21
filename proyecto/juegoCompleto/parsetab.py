@@ -5,9 +5,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = 'EQUALS ARREGLO ARREGLO_BI LPAREN RPAREN NUMBERS OPERADOR BOOLEAN POINT COMA RCORCHER LCORCHER DOUBLEPOINT ID AS FROM ZEROS RESHAPE IMPORT ARRAY NUMPY SHAPE SIZE\n            expression : ID ARREGLO\n                       | ID ARREGLO ARREGLO\n                       | ID EQUALS ID ARREGLO\n                       | ID EQUALS ID ARREGLO ARREGLO\n                       | ID LCORCHER NUMBERS RCORCHER\n                       | ID LCORCHER NUMBERS COMA NUMBERS RCORCHER\n                       | ID LCORCHER NUMBERS RCORCHER LCORCHER NUMBERS RCORCHER\n\n                       | ID EQUALS ID LCORCHER NUMBERS RCORCHER\n                       | ID EQUALS ID LCORCHER NUMBERS COMA NUMBERS RCORCHER\n                       | ID EQUALS ID LCORCHER NUMBERS RCORCHER LCORCHER NUMBERS RCORCHER\n        '
+_lr_signature = 'EQUALS ARREGLO ARREGLO_BI LPAREN RPAREN NUMBERS OPERADOR BOOLEAN POINT COMA RCORCHER LCORCHER DOUBLEPOINT ID AS FROM ZEROS RESHAPE IMPORT ARRAY NUMPY SHAPE SIZEexpression : IMPORT NUMPY AS ID\n                      | IMPORT ID FROM ID\n                       '
     
-_lr_action_items = {'RCORCHER':([8,14,15,20,22,24,],[12,17,19,23,25,26,]),'EQUALS':([2,],[3,]),'ARREGLO':([2,4,6,9,],[4,7,9,13,]),'NUMBERS':([5,10,11,16,18,21,],[8,14,15,20,22,24,]),'COMA':([8,14,],[11,18,]),'LCORCHER':([2,6,12,17,],[5,10,16,21,]),'ID':([0,3,],[2,6,]),'$end':([1,4,7,9,12,13,17,19,23,25,26,],[0,-1,-2,-3,-5,-4,-8,-6,-7,-9,-10,]),}
+_lr_action_items = {'FROM':([4,],[6,]),'AS':([3,],[5,]),'IMPORT':([0,],[1,]),'NUMPY':([1,],[3,]),'ID':([1,5,6,],[4,7,8,]),'$end':([2,7,8,],[0,-1,-2,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -16,7 +16,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'expression':([0,],[1,]),}
+_lr_goto_items = {'expression':([0,],[2,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -26,14 +26,6 @@ for _k, _v in _lr_goto_items.items():
 del _lr_goto_items
 _lr_productions = [
   ("S' -> expression","S'",1,None,None,None),
-  ('expression -> ID ARREGLO','expression',2,'p_expresion_indexacion','programaCompleto.py',282),
-  ('expression -> ID ARREGLO ARREGLO','expression',3,'p_expresion_indexacion','programaCompleto.py',283),
-  ('expression -> ID EQUALS ID ARREGLO','expression',4,'p_expresion_indexacion','programaCompleto.py',284),
-  ('expression -> ID EQUALS ID ARREGLO ARREGLO','expression',5,'p_expresion_indexacion','programaCompleto.py',285),
-  ('expression -> ID LCORCHER NUMBERS RCORCHER','expression',4,'p_expresion_indexacion','programaCompleto.py',286),
-  ('expression -> ID LCORCHER NUMBERS COMA NUMBERS RCORCHER','expression',6,'p_expresion_indexacion','programaCompleto.py',287),
-  ('expression -> ID LCORCHER NUMBERS RCORCHER LCORCHER NUMBERS RCORCHER','expression',7,'p_expresion_indexacion','programaCompleto.py',288),
-  ('expression -> ID EQUALS ID LCORCHER NUMBERS RCORCHER','expression',6,'p_expresion_indexacion','programaCompleto.py',290),
-  ('expression -> ID EQUALS ID LCORCHER NUMBERS COMA NUMBERS RCORCHER','expression',8,'p_expresion_indexacion','programaCompleto.py',291),
-  ('expression -> ID EQUALS ID LCORCHER NUMBERS RCORCHER LCORCHER NUMBERS RCORCHER','expression',9,'p_expresion_indexacion','programaCompleto.py',292),
+  ('expression -> IMPORT NUMPY AS ID','expression',4,'p_expresion_import','programaCompleto.py',72),
+  ('expression -> IMPORT ID FROM ID','expression',4,'p_expresion_import','programaCompleto.py',73),
 ]
