@@ -1,0 +1,1315 @@
+Created by PLY version 3.10 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> statement
+Rule 1     statement -> arreglo
+Rule 2     statement -> ID EQUALS arreglo
+Rule 3     statement -> VAR EQUALS arreglo
+Rule 4     statement -> operacion
+Rule 5     statement -> ID EQUALS operacion
+Rule 6     statement -> VAR EQUALS operacion
+Rule 7     statement -> importacion
+Rule 8     importacion -> IMPORT NUMPY AS ID
+Rule 9     importacion -> IMPORT NUMPY
+Rule 10    importacion -> FROM NUMPY IMPORT ARRAY
+Rule 11    importacion -> FROM NUMPY IMPORT ARRAY AS ID
+Rule 12    importacion -> FROM NUMPY IMPORT ID
+Rule 13    importacion -> FROM NUMPY IMPORT ID AS ID
+Rule 14    importacion -> IMPORT ID AS ID
+Rule 15    importacion -> IMPORT ID
+Rule 16    importacion -> FROM ID IMPORT ID
+Rule 17    importacion -> FROM ID IMPORT ID AS ID
+Rule 18    variosarreglos -> ARREGLO RPAREN
+Rule 19    variosarreglos -> ARREGLO COMA variosarreglos
+Rule 20    variosarreglos2 -> ARREGLO RCORCHER
+Rule 21    variosarreglos2 -> ARREGLO COMA variosarreglos2
+Rule 22    arreglo -> NP POINT ARRAY LPAREN LPAREN variosarreglos RPAREN
+Rule 23    arreglo -> NP POINT ARRAY LPAREN LCORCHER variosarreglos2 RPAREN
+Rule 24    arreglo -> NP POINT ARRAY LPAREN LCORCHER RCORCHER RPAREN
+Rule 25    arreglo -> NP POINT ARRAY LPAREN LPAREN RPAREN RPAREN
+Rule 26    arreglo -> NP POINT ARRAY LPAREN ARREGLO RPAREN
+Rule 27    arreglo -> NP POINT FUNCION LPAREN LPAREN variosarreglos RPAREN
+Rule 28    arreglo -> NP POINT FUNCION LPAREN LCORCHER variosarreglos2 RPAREN
+Rule 29    arreglo -> NP POINT FUNCION LPAREN LCORCHER RCORCHER RPAREN
+Rule 30    arreglo -> NP POINT FUNCION LPAREN LPAREN RPAREN RPAREN
+Rule 31    arreglo -> NP POINT FUNCION LPAREN ARREGLO RPAREN
+Rule 32    arreglo -> NP POINT ZEROS LPAREN NUMBERS COMA NUMBERS RPAREN
+Rule 33    arreglo -> NUMPY POINT ARRAY LPAREN LPAREN variosarreglos RPAREN
+Rule 34    arreglo -> NUMPY POINT ARRAY LPAREN LCORCHER variosarreglos2 RPAREN
+Rule 35    arreglo -> NUMPY POINT ARRAY LPAREN LCORCHER RCORCHER RPAREN
+Rule 36    arreglo -> NUMPY POINT ARRAY LPAREN LPAREN RPAREN RPAREN
+Rule 37    arreglo -> NUMPY POINT ARRAY LPAREN ARREGLO RPAREN
+Rule 38    arreglo -> NUMPY POINT FUNCION LPAREN LPAREN variosarreglos RPAREN
+Rule 39    arreglo -> NUMPY POINT FUNCION LPAREN LCORCHER variosarreglos2 RPAREN
+Rule 40    arreglo -> NUMPY POINT FUNCION LPAREN LCORCHER RCORCHER RPAREN
+Rule 41    arreglo -> NUMPY POINT FUNCION LPAREN LPAREN RPAREN RPAREN
+Rule 42    arreglo -> NUMPY POINT FUNCION LPAREN ARREGLO RPAREN
+Rule 43    arreglo -> FUNCION LPAREN LPAREN variosarreglos RPAREN
+Rule 44    arreglo -> FUNCION LPAREN LCORCHER variosarreglos2 RPAREN
+Rule 45    arreglo -> FUNCION LPAREN LCORCHER RCORCHER RPAREN
+Rule 46    arreglo -> FUNCION LPAREN LPAREN RPAREN RPAREN
+Rule 47    arreglo -> FUNCION LPAREN ARREGLO RPAREN
+Rule 48    arreglo -> NUMPY POINT ZEROS LPAREN NUMBERS COMA NUMBERS RPAREN
+Rule 49    operacion -> VAR OPERADOR VAR
+
+Terminals, with rules where they appear
+
+ARRAY                : 10 11 22 23 24 25 26 33 34 35 36 37
+ARREGLO              : 18 19 20 21 26 31 37 42 47
+AS                   : 8 11 13 14 17
+COMA                 : 19 21 32 48
+EQUALS               : 2 3 5 6
+FROM                 : 10 11 12 13 16 17
+FUNCION              : 27 28 29 30 31 38 39 40 41 42 43 44 45 46 47
+ID                   : 2 5 8 11 12 13 13 14 14 15 16 16 17 17 17
+IMPORT               : 8 9 10 11 12 13 14 15 16 17
+LCORCHER             : 23 24 28 29 34 35 39 40 44 45
+LPAREN               : 22 22 23 24 25 25 26 27 27 28 29 30 30 31 32 33 33 34 35 36 36 37 38 38 39 40 41 41 42 43 43 44 45 46 46 47 48
+NP                   : 22 23 24 25 26 27 28 29 30 31 32
+NUMBERS              : 32 32 48 48
+NUMPY                : 8 9 10 11 12 13 33 34 35 36 37 38 39 40 41 42 48
+OPERADOR             : 49
+POINT                : 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 48
+RCORCHER             : 20 24 29 35 40 45
+RPAREN               : 18 22 23 24 25 25 26 27 28 29 30 30 31 32 33 34 35 36 36 37 38 39 40 41 41 42 43 44 45 46 46 47 48
+VAR                  : 3 6 49 49
+ZEROS                : 32 48
+error                : 
+
+Nonterminals, with rules where they appear
+
+arreglo              : 1 2 3
+importacion          : 7
+operacion            : 4 5 6
+statement            : 0
+variosarreglos       : 19 22 27 33 38 43
+variosarreglos2      : 21 23 28 34 39 44
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . statement
+    (1) statement -> . arreglo
+    (2) statement -> . ID EQUALS arreglo
+    (3) statement -> . VAR EQUALS arreglo
+    (4) statement -> . operacion
+    (5) statement -> . ID EQUALS operacion
+    (6) statement -> . VAR EQUALS operacion
+    (7) statement -> . importacion
+    (22) arreglo -> . NP POINT ARRAY LPAREN LPAREN variosarreglos RPAREN
+    (23) arreglo -> . NP POINT ARRAY LPAREN LCORCHER variosarreglos2 RPAREN
+    (24) arreglo -> . NP POINT ARRAY LPAREN LCORCHER RCORCHER RPAREN
+    (25) arreglo -> . NP POINT ARRAY LPAREN LPAREN RPAREN RPAREN
+    (26) arreglo -> . NP POINT ARRAY LPAREN ARREGLO RPAREN
+    (27) arreglo -> . NP POINT FUNCION LPAREN LPAREN variosarreglos RPAREN
+    (28) arreglo -> . NP POINT FUNCION LPAREN LCORCHER variosarreglos2 RPAREN
+    (29) arreglo -> . NP POINT FUNCION LPAREN LCORCHER RCORCHER RPAREN
+    (30) arreglo -> . NP POINT FUNCION LPAREN LPAREN RPAREN RPAREN
+    (31) arreglo -> . NP POINT FUNCION LPAREN ARREGLO RPAREN
+    (32) arreglo -> . NP POINT ZEROS LPAREN NUMBERS COMA NUMBERS RPAREN
+    (33) arreglo -> . NUMPY POINT ARRAY LPAREN LPAREN variosarreglos RPAREN
+    (34) arreglo -> . NUMPY POINT ARRAY LPAREN LCORCHER variosarreglos2 RPAREN
+    (35) arreglo -> . NUMPY POINT ARRAY LPAREN LCORCHER RCORCHER RPAREN
+    (36) arreglo -> . NUMPY POINT ARRAY LPAREN LPAREN RPAREN RPAREN
+    (37) arreglo -> . NUMPY POINT ARRAY LPAREN ARREGLO RPAREN
+    (38) arreglo -> . NUMPY POINT FUNCION LPAREN LPAREN variosarreglos RPAREN
+    (39) arreglo -> . NUMPY POINT FUNCION LPAREN LCORCHER variosarreglos2 RPAREN
+    (40) arreglo -> . NUMPY POINT FUNCION LPAREN LCORCHER RCORCHER RPAREN
+    (41) arreglo -> . NUMPY POINT FUNCION LPAREN LPAREN RPAREN RPAREN
+    (42) arreglo -> . NUMPY POINT FUNCION LPAREN ARREGLO RPAREN
+    (43) arreglo -> . FUNCION LPAREN LPAREN variosarreglos RPAREN
+    (44) arreglo -> . FUNCION LPAREN LCORCHER variosarreglos2 RPAREN
+    (45) arreglo -> . FUNCION LPAREN LCORCHER RCORCHER RPAREN
+    (46) arreglo -> . FUNCION LPAREN LPAREN RPAREN RPAREN
+    (47) arreglo -> . FUNCION LPAREN ARREGLO RPAREN
+    (48) arreglo -> . NUMPY POINT ZEROS LPAREN NUMBERS COMA NUMBERS RPAREN
+    (49) operacion -> . VAR OPERADOR VAR
+    (8) importacion -> . IMPORT NUMPY AS ID
+    (9) importacion -> . IMPORT NUMPY
+    (10) importacion -> . FROM NUMPY IMPORT ARRAY
+    (11) importacion -> . FROM NUMPY IMPORT ARRAY AS ID
+    (12) importacion -> . FROM NUMPY IMPORT ID
+    (13) importacion -> . FROM NUMPY IMPORT ID AS ID
+    (14) importacion -> . IMPORT ID AS ID
+    (15) importacion -> . IMPORT ID
+    (16) importacion -> . FROM ID IMPORT ID
+    (17) importacion -> . FROM ID IMPORT ID AS ID
+
+    ID              shift and go to state 9
+    VAR             shift and go to state 2
+    NP              shift and go to state 5
+    NUMPY           shift and go to state 3
+    FUNCION         shift and go to state 10
+    IMPORT          shift and go to state 6
+    FROM            shift and go to state 11
+
+    importacion                    shift and go to state 7
+    operacion                      shift and go to state 8
+    arreglo                        shift and go to state 1
+    statement                      shift and go to state 4
+
+state 1
+
+    (1) statement -> arreglo .
+
+    $end            reduce using rule 1 (statement -> arreglo .)
+
+
+state 2
+
+    (3) statement -> VAR . EQUALS arreglo
+    (6) statement -> VAR . EQUALS operacion
+    (49) operacion -> VAR . OPERADOR VAR
+
+    EQUALS          shift and go to state 12
+    OPERADOR        shift and go to state 13
+
+
+state 3
+
+    (33) arreglo -> NUMPY . POINT ARRAY LPAREN LPAREN variosarreglos RPAREN
+    (34) arreglo -> NUMPY . POINT ARRAY LPAREN LCORCHER variosarreglos2 RPAREN
+    (35) arreglo -> NUMPY . POINT ARRAY LPAREN LCORCHER RCORCHER RPAREN
+    (36) arreglo -> NUMPY . POINT ARRAY LPAREN LPAREN RPAREN RPAREN
+    (37) arreglo -> NUMPY . POINT ARRAY LPAREN ARREGLO RPAREN
+    (38) arreglo -> NUMPY . POINT FUNCION LPAREN LPAREN variosarreglos RPAREN
+    (39) arreglo -> NUMPY . POINT FUNCION LPAREN LCORCHER variosarreglos2 RPAREN
+    (40) arreglo -> NUMPY . POINT FUNCION LPAREN LCORCHER RCORCHER RPAREN
+    (41) arreglo -> NUMPY . POINT FUNCION LPAREN LPAREN RPAREN RPAREN
+    (42) arreglo -> NUMPY . POINT FUNCION LPAREN ARREGLO RPAREN
+    (48) arreglo -> NUMPY . POINT ZEROS LPAREN NUMBERS COMA NUMBERS RPAREN
+
+    POINT           shift and go to state 14
+
+
+state 4
+
+    (0) S' -> statement .
+
+
+
+state 5
+
+    (22) arreglo -> NP . POINT ARRAY LPAREN LPAREN variosarreglos RPAREN
+    (23) arreglo -> NP . POINT ARRAY LPAREN LCORCHER variosarreglos2 RPAREN
+    (24) arreglo -> NP . POINT ARRAY LPAREN LCORCHER RCORCHER RPAREN
+    (25) arreglo -> NP . POINT ARRAY LPAREN LPAREN RPAREN RPAREN
+    (26) arreglo -> NP . POINT ARRAY LPAREN ARREGLO RPAREN
+    (27) arreglo -> NP . POINT FUNCION LPAREN LPAREN variosarreglos RPAREN
+    (28) arreglo -> NP . POINT FUNCION LPAREN LCORCHER variosarreglos2 RPAREN
+    (29) arreglo -> NP . POINT FUNCION LPAREN LCORCHER RCORCHER RPAREN
+    (30) arreglo -> NP . POINT FUNCION LPAREN LPAREN RPAREN RPAREN
+    (31) arreglo -> NP . POINT FUNCION LPAREN ARREGLO RPAREN
+    (32) arreglo -> NP . POINT ZEROS LPAREN NUMBERS COMA NUMBERS RPAREN
+
+    POINT           shift and go to state 15
+
+
+state 6
+
+    (8) importacion -> IMPORT . NUMPY AS ID
+    (9) importacion -> IMPORT . NUMPY
+    (14) importacion -> IMPORT . ID AS ID
+    (15) importacion -> IMPORT . ID
+
+    NUMPY           shift and go to state 16
+    ID              shift and go to state 17
+
+
+state 7
+
+    (7) statement -> importacion .
+
+    $end            reduce using rule 7 (statement -> importacion .)
+
+
+state 8
+
+    (4) statement -> operacion .
+
+    $end            reduce using rule 4 (statement -> operacion .)
+
+
+state 9
+
+    (2) statement -> ID . EQUALS arreglo
+    (5) statement -> ID . EQUALS operacion
+
+    EQUALS          shift and go to state 18
+
+
+state 10
+
+    (43) arreglo -> FUNCION . LPAREN LPAREN variosarreglos RPAREN
+    (44) arreglo -> FUNCION . LPAREN LCORCHER variosarreglos2 RPAREN
+    (45) arreglo -> FUNCION . LPAREN LCORCHER RCORCHER RPAREN
+    (46) arreglo -> FUNCION . LPAREN LPAREN RPAREN RPAREN
+    (47) arreglo -> FUNCION . LPAREN ARREGLO RPAREN
+
+    LPAREN          shift and go to state 19
+
+
+state 11
+
+    (10) importacion -> FROM . NUMPY IMPORT ARRAY
+    (11) importacion -> FROM . NUMPY IMPORT ARRAY AS ID
+    (12) importacion -> FROM . NUMPY IMPORT ID
+    (13) importacion -> FROM . NUMPY IMPORT ID AS ID
+    (16) importacion -> FROM . ID IMPORT ID
+    (17) importacion -> FROM . ID IMPORT ID AS ID
+
+    NUMPY           shift and go to state 20
+    ID              shift and go to state 21
+
+
+state 12
+
+    (3) statement -> VAR EQUALS . arreglo
+    (6) statement -> VAR EQUALS . operacion
+    (22) arreglo -> . NP POINT ARRAY LPAREN LPAREN variosarreglos RPAREN
+    (23) arreglo -> . NP POINT ARRAY LPAREN LCORCHER variosarreglos2 RPAREN
+    (24) arreglo -> . NP POINT ARRAY LPAREN LCORCHER RCORCHER RPAREN
+    (25) arreglo -> . NP POINT ARRAY LPAREN LPAREN RPAREN RPAREN
+    (26) arreglo -> . NP POINT ARRAY LPAREN ARREGLO RPAREN
+    (27) arreglo -> . NP POINT FUNCION LPAREN LPAREN variosarreglos RPAREN
+    (28) arreglo -> . NP POINT FUNCION LPAREN LCORCHER variosarreglos2 RPAREN
+    (29) arreglo -> . NP POINT FUNCION LPAREN LCORCHER RCORCHER RPAREN
+    (30) arreglo -> . NP POINT FUNCION LPAREN LPAREN RPAREN RPAREN
+    (31) arreglo -> . NP POINT FUNCION LPAREN ARREGLO RPAREN
+    (32) arreglo -> . NP POINT ZEROS LPAREN NUMBERS COMA NUMBERS RPAREN
+    (33) arreglo -> . NUMPY POINT ARRAY LPAREN LPAREN variosarreglos RPAREN
+    (34) arreglo -> . NUMPY POINT ARRAY LPAREN LCORCHER variosarreglos2 RPAREN
+    (35) arreglo -> . NUMPY POINT ARRAY LPAREN LCORCHER RCORCHER RPAREN
+    (36) arreglo -> . NUMPY POINT ARRAY LPAREN LPAREN RPAREN RPAREN
+    (37) arreglo -> . NUMPY POINT ARRAY LPAREN ARREGLO RPAREN
+    (38) arreglo -> . NUMPY POINT FUNCION LPAREN LPAREN variosarreglos RPAREN
+    (39) arreglo -> . NUMPY POINT FUNCION LPAREN LCORCHER variosarreglos2 RPAREN
+    (40) arreglo -> . NUMPY POINT FUNCION LPAREN LCORCHER RCORCHER RPAREN
+    (41) arreglo -> . NUMPY POINT FUNCION LPAREN LPAREN RPAREN RPAREN
+    (42) arreglo -> . NUMPY POINT FUNCION LPAREN ARREGLO RPAREN
+    (43) arreglo -> . FUNCION LPAREN LPAREN variosarreglos RPAREN
+    (44) arreglo -> . FUNCION LPAREN LCORCHER variosarreglos2 RPAREN
+    (45) arreglo -> . FUNCION LPAREN LCORCHER RCORCHER RPAREN
+    (46) arreglo -> . FUNCION LPAREN LPAREN RPAREN RPAREN
+    (47) arreglo -> . FUNCION LPAREN ARREGLO RPAREN
+    (48) arreglo -> . NUMPY POINT ZEROS LPAREN NUMBERS COMA NUMBERS RPAREN
+    (49) operacion -> . VAR OPERADOR VAR
+
+    NP              shift and go to state 5
+    NUMPY           shift and go to state 3
+    FUNCION         shift and go to state 10
+    VAR             shift and go to state 24
+
+    arreglo                        shift and go to state 23
+    operacion                      shift and go to state 22
+
+state 13
+
+    (49) operacion -> VAR OPERADOR . VAR
+
+    VAR             shift and go to state 25
+
+
+state 14
+
+    (33) arreglo -> NUMPY POINT . ARRAY LPAREN LPAREN variosarreglos RPAREN
+    (34) arreglo -> NUMPY POINT . ARRAY LPAREN LCORCHER variosarreglos2 RPAREN
+    (35) arreglo -> NUMPY POINT . ARRAY LPAREN LCORCHER RCORCHER RPAREN
+    (36) arreglo -> NUMPY POINT . ARRAY LPAREN LPAREN RPAREN RPAREN
+    (37) arreglo -> NUMPY POINT . ARRAY LPAREN ARREGLO RPAREN
+    (38) arreglo -> NUMPY POINT . FUNCION LPAREN LPAREN variosarreglos RPAREN
+    (39) arreglo -> NUMPY POINT . FUNCION LPAREN LCORCHER variosarreglos2 RPAREN
+    (40) arreglo -> NUMPY POINT . FUNCION LPAREN LCORCHER RCORCHER RPAREN
+    (41) arreglo -> NUMPY POINT . FUNCION LPAREN LPAREN RPAREN RPAREN
+    (42) arreglo -> NUMPY POINT . FUNCION LPAREN ARREGLO RPAREN
+    (48) arreglo -> NUMPY POINT . ZEROS LPAREN NUMBERS COMA NUMBERS RPAREN
+
+    ARRAY           shift and go to state 27
+    FUNCION         shift and go to state 28
+    ZEROS           shift and go to state 26
+
+
+state 15
+
+    (22) arreglo -> NP POINT . ARRAY LPAREN LPAREN variosarreglos RPAREN
+    (23) arreglo -> NP POINT . ARRAY LPAREN LCORCHER variosarreglos2 RPAREN
+    (24) arreglo -> NP POINT . ARRAY LPAREN LCORCHER RCORCHER RPAREN
+    (25) arreglo -> NP POINT . ARRAY LPAREN LPAREN RPAREN RPAREN
+    (26) arreglo -> NP POINT . ARRAY LPAREN ARREGLO RPAREN
+    (27) arreglo -> NP POINT . FUNCION LPAREN LPAREN variosarreglos RPAREN
+    (28) arreglo -> NP POINT . FUNCION LPAREN LCORCHER variosarreglos2 RPAREN
+    (29) arreglo -> NP POINT . FUNCION LPAREN LCORCHER RCORCHER RPAREN
+    (30) arreglo -> NP POINT . FUNCION LPAREN LPAREN RPAREN RPAREN
+    (31) arreglo -> NP POINT . FUNCION LPAREN ARREGLO RPAREN
+    (32) arreglo -> NP POINT . ZEROS LPAREN NUMBERS COMA NUMBERS RPAREN
+
+    ARRAY           shift and go to state 30
+    FUNCION         shift and go to state 31
+    ZEROS           shift and go to state 29
+
+
+state 16
+
+    (8) importacion -> IMPORT NUMPY . AS ID
+    (9) importacion -> IMPORT NUMPY .
+
+    AS              shift and go to state 32
+    $end            reduce using rule 9 (importacion -> IMPORT NUMPY .)
+
+
+state 17
+
+    (14) importacion -> IMPORT ID . AS ID
+    (15) importacion -> IMPORT ID .
+
+    AS              shift and go to state 33
+    $end            reduce using rule 15 (importacion -> IMPORT ID .)
+
+
+state 18
+
+    (2) statement -> ID EQUALS . arreglo
+    (5) statement -> ID EQUALS . operacion
+    (22) arreglo -> . NP POINT ARRAY LPAREN LPAREN variosarreglos RPAREN
+    (23) arreglo -> . NP POINT ARRAY LPAREN LCORCHER variosarreglos2 RPAREN
+    (24) arreglo -> . NP POINT ARRAY LPAREN LCORCHER RCORCHER RPAREN
+    (25) arreglo -> . NP POINT ARRAY LPAREN LPAREN RPAREN RPAREN
+    (26) arreglo -> . NP POINT ARRAY LPAREN ARREGLO RPAREN
+    (27) arreglo -> . NP POINT FUNCION LPAREN LPAREN variosarreglos RPAREN
+    (28) arreglo -> . NP POINT FUNCION LPAREN LCORCHER variosarreglos2 RPAREN
+    (29) arreglo -> . NP POINT FUNCION LPAREN LCORCHER RCORCHER RPAREN
+    (30) arreglo -> . NP POINT FUNCION LPAREN LPAREN RPAREN RPAREN
+    (31) arreglo -> . NP POINT FUNCION LPAREN ARREGLO RPAREN
+    (32) arreglo -> . NP POINT ZEROS LPAREN NUMBERS COMA NUMBERS RPAREN
+    (33) arreglo -> . NUMPY POINT ARRAY LPAREN LPAREN variosarreglos RPAREN
+    (34) arreglo -> . NUMPY POINT ARRAY LPAREN LCORCHER variosarreglos2 RPAREN
+    (35) arreglo -> . NUMPY POINT ARRAY LPAREN LCORCHER RCORCHER RPAREN
+    (36) arreglo -> . NUMPY POINT ARRAY LPAREN LPAREN RPAREN RPAREN
+    (37) arreglo -> . NUMPY POINT ARRAY LPAREN ARREGLO RPAREN
+    (38) arreglo -> . NUMPY POINT FUNCION LPAREN LPAREN variosarreglos RPAREN
+    (39) arreglo -> . NUMPY POINT FUNCION LPAREN LCORCHER variosarreglos2 RPAREN
+    (40) arreglo -> . NUMPY POINT FUNCION LPAREN LCORCHER RCORCHER RPAREN
+    (41) arreglo -> . NUMPY POINT FUNCION LPAREN LPAREN RPAREN RPAREN
+    (42) arreglo -> . NUMPY POINT FUNCION LPAREN ARREGLO RPAREN
+    (43) arreglo -> . FUNCION LPAREN LPAREN variosarreglos RPAREN
+    (44) arreglo -> . FUNCION LPAREN LCORCHER variosarreglos2 RPAREN
+    (45) arreglo -> . FUNCION LPAREN LCORCHER RCORCHER RPAREN
+    (46) arreglo -> . FUNCION LPAREN LPAREN RPAREN RPAREN
+    (47) arreglo -> . FUNCION LPAREN ARREGLO RPAREN
+    (48) arreglo -> . NUMPY POINT ZEROS LPAREN NUMBERS COMA NUMBERS RPAREN
+    (49) operacion -> . VAR OPERADOR VAR
+
+    NP              shift and go to state 5
+    NUMPY           shift and go to state 3
+    FUNCION         shift and go to state 10
+    VAR             shift and go to state 24
+
+    arreglo                        shift and go to state 35
+    operacion                      shift and go to state 34
+
+state 19
+
+    (43) arreglo -> FUNCION LPAREN . LPAREN variosarreglos RPAREN
+    (44) arreglo -> FUNCION LPAREN . LCORCHER variosarreglos2 RPAREN
+    (45) arreglo -> FUNCION LPAREN . LCORCHER RCORCHER RPAREN
+    (46) arreglo -> FUNCION LPAREN . LPAREN RPAREN RPAREN
+    (47) arreglo -> FUNCION LPAREN . ARREGLO RPAREN
+
+    LPAREN          shift and go to state 37
+    LCORCHER        shift and go to state 38
+    ARREGLO         shift and go to state 36
+
+
+state 20
+
+    (10) importacion -> FROM NUMPY . IMPORT ARRAY
+    (11) importacion -> FROM NUMPY . IMPORT ARRAY AS ID
+    (12) importacion -> FROM NUMPY . IMPORT ID
+    (13) importacion -> FROM NUMPY . IMPORT ID AS ID
+
+    IMPORT          shift and go to state 39
+
+
+state 21
+
+    (16) importacion -> FROM ID . IMPORT ID
+    (17) importacion -> FROM ID . IMPORT ID AS ID
+
+    IMPORT          shift and go to state 40
+
+
+state 22
+
+    (6) statement -> VAR EQUALS operacion .
+
+    $end            reduce using rule 6 (statement -> VAR EQUALS operacion .)
+
+
+state 23
+
+    (3) statement -> VAR EQUALS arreglo .
+
+    $end            reduce using rule 3 (statement -> VAR EQUALS arreglo .)
+
+
+state 24
+
+    (49) operacion -> VAR . OPERADOR VAR
+
+    OPERADOR        shift and go to state 13
+
+
+state 25
+
+    (49) operacion -> VAR OPERADOR VAR .
+
+    $end            reduce using rule 49 (operacion -> VAR OPERADOR VAR .)
+
+
+state 26
+
+    (48) arreglo -> NUMPY POINT ZEROS . LPAREN NUMBERS COMA NUMBERS RPAREN
+
+    LPAREN          shift and go to state 41
+
+
+state 27
+
+    (33) arreglo -> NUMPY POINT ARRAY . LPAREN LPAREN variosarreglos RPAREN
+    (34) arreglo -> NUMPY POINT ARRAY . LPAREN LCORCHER variosarreglos2 RPAREN
+    (35) arreglo -> NUMPY POINT ARRAY . LPAREN LCORCHER RCORCHER RPAREN
+    (36) arreglo -> NUMPY POINT ARRAY . LPAREN LPAREN RPAREN RPAREN
+    (37) arreglo -> NUMPY POINT ARRAY . LPAREN ARREGLO RPAREN
+
+    LPAREN          shift and go to state 42
+
+
+state 28
+
+    (38) arreglo -> NUMPY POINT FUNCION . LPAREN LPAREN variosarreglos RPAREN
+    (39) arreglo -> NUMPY POINT FUNCION . LPAREN LCORCHER variosarreglos2 RPAREN
+    (40) arreglo -> NUMPY POINT FUNCION . LPAREN LCORCHER RCORCHER RPAREN
+    (41) arreglo -> NUMPY POINT FUNCION . LPAREN LPAREN RPAREN RPAREN
+    (42) arreglo -> NUMPY POINT FUNCION . LPAREN ARREGLO RPAREN
+
+    LPAREN          shift and go to state 43
+
+
+state 29
+
+    (32) arreglo -> NP POINT ZEROS . LPAREN NUMBERS COMA NUMBERS RPAREN
+
+    LPAREN          shift and go to state 44
+
+
+state 30
+
+    (22) arreglo -> NP POINT ARRAY . LPAREN LPAREN variosarreglos RPAREN
+    (23) arreglo -> NP POINT ARRAY . LPAREN LCORCHER variosarreglos2 RPAREN
+    (24) arreglo -> NP POINT ARRAY . LPAREN LCORCHER RCORCHER RPAREN
+    (25) arreglo -> NP POINT ARRAY . LPAREN LPAREN RPAREN RPAREN
+    (26) arreglo -> NP POINT ARRAY . LPAREN ARREGLO RPAREN
+
+    LPAREN          shift and go to state 45
+
+
+state 31
+
+    (27) arreglo -> NP POINT FUNCION . LPAREN LPAREN variosarreglos RPAREN
+    (28) arreglo -> NP POINT FUNCION . LPAREN LCORCHER variosarreglos2 RPAREN
+    (29) arreglo -> NP POINT FUNCION . LPAREN LCORCHER RCORCHER RPAREN
+    (30) arreglo -> NP POINT FUNCION . LPAREN LPAREN RPAREN RPAREN
+    (31) arreglo -> NP POINT FUNCION . LPAREN ARREGLO RPAREN
+
+    LPAREN          shift and go to state 46
+
+
+state 32
+
+    (8) importacion -> IMPORT NUMPY AS . ID
+
+    ID              shift and go to state 47
+
+
+state 33
+
+    (14) importacion -> IMPORT ID AS . ID
+
+    ID              shift and go to state 48
+
+
+state 34
+
+    (5) statement -> ID EQUALS operacion .
+
+    $end            reduce using rule 5 (statement -> ID EQUALS operacion .)
+
+
+state 35
+
+    (2) statement -> ID EQUALS arreglo .
+
+    $end            reduce using rule 2 (statement -> ID EQUALS arreglo .)
+
+
+state 36
+
+    (47) arreglo -> FUNCION LPAREN ARREGLO . RPAREN
+
+    RPAREN          shift and go to state 49
+
+
+state 37
+
+    (43) arreglo -> FUNCION LPAREN LPAREN . variosarreglos RPAREN
+    (46) arreglo -> FUNCION LPAREN LPAREN . RPAREN RPAREN
+    (18) variosarreglos -> . ARREGLO RPAREN
+    (19) variosarreglos -> . ARREGLO COMA variosarreglos
+
+    RPAREN          shift and go to state 50
+    ARREGLO         shift and go to state 52
+
+    variosarreglos                 shift and go to state 51
+
+state 38
+
+    (44) arreglo -> FUNCION LPAREN LCORCHER . variosarreglos2 RPAREN
+    (45) arreglo -> FUNCION LPAREN LCORCHER . RCORCHER RPAREN
+    (20) variosarreglos2 -> . ARREGLO RCORCHER
+    (21) variosarreglos2 -> . ARREGLO COMA variosarreglos2
+
+    RCORCHER        shift and go to state 53
+    ARREGLO         shift and go to state 54
+
+    variosarreglos2                shift and go to state 55
+
+state 39
+
+    (10) importacion -> FROM NUMPY IMPORT . ARRAY
+    (11) importacion -> FROM NUMPY IMPORT . ARRAY AS ID
+    (12) importacion -> FROM NUMPY IMPORT . ID
+    (13) importacion -> FROM NUMPY IMPORT . ID AS ID
+
+    ARRAY           shift and go to state 56
+    ID              shift and go to state 57
+
+
+state 40
+
+    (16) importacion -> FROM ID IMPORT . ID
+    (17) importacion -> FROM ID IMPORT . ID AS ID
+
+    ID              shift and go to state 58
+
+
+state 41
+
+    (48) arreglo -> NUMPY POINT ZEROS LPAREN . NUMBERS COMA NUMBERS RPAREN
+
+    NUMBERS         shift and go to state 59
+
+
+state 42
+
+    (33) arreglo -> NUMPY POINT ARRAY LPAREN . LPAREN variosarreglos RPAREN
+    (34) arreglo -> NUMPY POINT ARRAY LPAREN . LCORCHER variosarreglos2 RPAREN
+    (35) arreglo -> NUMPY POINT ARRAY LPAREN . LCORCHER RCORCHER RPAREN
+    (36) arreglo -> NUMPY POINT ARRAY LPAREN . LPAREN RPAREN RPAREN
+    (37) arreglo -> NUMPY POINT ARRAY LPAREN . ARREGLO RPAREN
+
+    LPAREN          shift and go to state 62
+    LCORCHER        shift and go to state 60
+    ARREGLO         shift and go to state 61
+
+
+state 43
+
+    (38) arreglo -> NUMPY POINT FUNCION LPAREN . LPAREN variosarreglos RPAREN
+    (39) arreglo -> NUMPY POINT FUNCION LPAREN . LCORCHER variosarreglos2 RPAREN
+    (40) arreglo -> NUMPY POINT FUNCION LPAREN . LCORCHER RCORCHER RPAREN
+    (41) arreglo -> NUMPY POINT FUNCION LPAREN . LPAREN RPAREN RPAREN
+    (42) arreglo -> NUMPY POINT FUNCION LPAREN . ARREGLO RPAREN
+
+    LPAREN          shift and go to state 65
+    LCORCHER        shift and go to state 63
+    ARREGLO         shift and go to state 64
+
+
+state 44
+
+    (32) arreglo -> NP POINT ZEROS LPAREN . NUMBERS COMA NUMBERS RPAREN
+
+    NUMBERS         shift and go to state 66
+
+
+state 45
+
+    (22) arreglo -> NP POINT ARRAY LPAREN . LPAREN variosarreglos RPAREN
+    (23) arreglo -> NP POINT ARRAY LPAREN . LCORCHER variosarreglos2 RPAREN
+    (24) arreglo -> NP POINT ARRAY LPAREN . LCORCHER RCORCHER RPAREN
+    (25) arreglo -> NP POINT ARRAY LPAREN . LPAREN RPAREN RPAREN
+    (26) arreglo -> NP POINT ARRAY LPAREN . ARREGLO RPAREN
+
+    LPAREN          shift and go to state 68
+    LCORCHER        shift and go to state 69
+    ARREGLO         shift and go to state 67
+
+
+state 46
+
+    (27) arreglo -> NP POINT FUNCION LPAREN . LPAREN variosarreglos RPAREN
+    (28) arreglo -> NP POINT FUNCION LPAREN . LCORCHER variosarreglos2 RPAREN
+    (29) arreglo -> NP POINT FUNCION LPAREN . LCORCHER RCORCHER RPAREN
+    (30) arreglo -> NP POINT FUNCION LPAREN . LPAREN RPAREN RPAREN
+    (31) arreglo -> NP POINT FUNCION LPAREN . ARREGLO RPAREN
+
+    LPAREN          shift and go to state 71
+    LCORCHER        shift and go to state 72
+    ARREGLO         shift and go to state 70
+
+
+state 47
+
+    (8) importacion -> IMPORT NUMPY AS ID .
+
+    $end            reduce using rule 8 (importacion -> IMPORT NUMPY AS ID .)
+
+
+state 48
+
+    (14) importacion -> IMPORT ID AS ID .
+
+    $end            reduce using rule 14 (importacion -> IMPORT ID AS ID .)
+
+
+state 49
+
+    (47) arreglo -> FUNCION LPAREN ARREGLO RPAREN .
+
+    $end            reduce using rule 47 (arreglo -> FUNCION LPAREN ARREGLO RPAREN .)
+
+
+state 50
+
+    (46) arreglo -> FUNCION LPAREN LPAREN RPAREN . RPAREN
+
+    RPAREN          shift and go to state 73
+
+
+state 51
+
+    (43) arreglo -> FUNCION LPAREN LPAREN variosarreglos . RPAREN
+
+    RPAREN          shift and go to state 74
+
+
+state 52
+
+    (18) variosarreglos -> ARREGLO . RPAREN
+    (19) variosarreglos -> ARREGLO . COMA variosarreglos
+
+    RPAREN          shift and go to state 76
+    COMA            shift and go to state 75
+
+
+state 53
+
+    (45) arreglo -> FUNCION LPAREN LCORCHER RCORCHER . RPAREN
+
+    RPAREN          shift and go to state 77
+
+
+state 54
+
+    (20) variosarreglos2 -> ARREGLO . RCORCHER
+    (21) variosarreglos2 -> ARREGLO . COMA variosarreglos2
+
+    RCORCHER        shift and go to state 79
+    COMA            shift and go to state 78
+
+
+state 55
+
+    (44) arreglo -> FUNCION LPAREN LCORCHER variosarreglos2 . RPAREN
+
+    RPAREN          shift and go to state 80
+
+
+state 56
+
+    (10) importacion -> FROM NUMPY IMPORT ARRAY .
+    (11) importacion -> FROM NUMPY IMPORT ARRAY . AS ID
+
+    $end            reduce using rule 10 (importacion -> FROM NUMPY IMPORT ARRAY .)
+    AS              shift and go to state 81
+
+
+state 57
+
+    (12) importacion -> FROM NUMPY IMPORT ID .
+    (13) importacion -> FROM NUMPY IMPORT ID . AS ID
+
+    $end            reduce using rule 12 (importacion -> FROM NUMPY IMPORT ID .)
+    AS              shift and go to state 82
+
+
+state 58
+
+    (16) importacion -> FROM ID IMPORT ID .
+    (17) importacion -> FROM ID IMPORT ID . AS ID
+
+    $end            reduce using rule 16 (importacion -> FROM ID IMPORT ID .)
+    AS              shift and go to state 83
+
+
+state 59
+
+    (48) arreglo -> NUMPY POINT ZEROS LPAREN NUMBERS . COMA NUMBERS RPAREN
+
+    COMA            shift and go to state 84
+
+
+state 60
+
+    (34) arreglo -> NUMPY POINT ARRAY LPAREN LCORCHER . variosarreglos2 RPAREN
+    (35) arreglo -> NUMPY POINT ARRAY LPAREN LCORCHER . RCORCHER RPAREN
+    (20) variosarreglos2 -> . ARREGLO RCORCHER
+    (21) variosarreglos2 -> . ARREGLO COMA variosarreglos2
+
+    RCORCHER        shift and go to state 85
+    ARREGLO         shift and go to state 54
+
+    variosarreglos2                shift and go to state 86
+
+state 61
+
+    (37) arreglo -> NUMPY POINT ARRAY LPAREN ARREGLO . RPAREN
+
+    RPAREN          shift and go to state 87
+
+
+state 62
+
+    (33) arreglo -> NUMPY POINT ARRAY LPAREN LPAREN . variosarreglos RPAREN
+    (36) arreglo -> NUMPY POINT ARRAY LPAREN LPAREN . RPAREN RPAREN
+    (18) variosarreglos -> . ARREGLO RPAREN
+    (19) variosarreglos -> . ARREGLO COMA variosarreglos
+
+    RPAREN          shift and go to state 88
+    ARREGLO         shift and go to state 52
+
+    variosarreglos                 shift and go to state 89
+
+state 63
+
+    (39) arreglo -> NUMPY POINT FUNCION LPAREN LCORCHER . variosarreglos2 RPAREN
+    (40) arreglo -> NUMPY POINT FUNCION LPAREN LCORCHER . RCORCHER RPAREN
+    (20) variosarreglos2 -> . ARREGLO RCORCHER
+    (21) variosarreglos2 -> . ARREGLO COMA variosarreglos2
+
+    RCORCHER        shift and go to state 90
+    ARREGLO         shift and go to state 54
+
+    variosarreglos2                shift and go to state 91
+
+state 64
+
+    (42) arreglo -> NUMPY POINT FUNCION LPAREN ARREGLO . RPAREN
+
+    RPAREN          shift and go to state 92
+
+
+state 65
+
+    (38) arreglo -> NUMPY POINT FUNCION LPAREN LPAREN . variosarreglos RPAREN
+    (41) arreglo -> NUMPY POINT FUNCION LPAREN LPAREN . RPAREN RPAREN
+    (18) variosarreglos -> . ARREGLO RPAREN
+    (19) variosarreglos -> . ARREGLO COMA variosarreglos
+
+    RPAREN          shift and go to state 93
+    ARREGLO         shift and go to state 52
+
+    variosarreglos                 shift and go to state 94
+
+state 66
+
+    (32) arreglo -> NP POINT ZEROS LPAREN NUMBERS . COMA NUMBERS RPAREN
+
+    COMA            shift and go to state 95
+
+
+state 67
+
+    (26) arreglo -> NP POINT ARRAY LPAREN ARREGLO . RPAREN
+
+    RPAREN          shift and go to state 96
+
+
+state 68
+
+    (22) arreglo -> NP POINT ARRAY LPAREN LPAREN . variosarreglos RPAREN
+    (25) arreglo -> NP POINT ARRAY LPAREN LPAREN . RPAREN RPAREN
+    (18) variosarreglos -> . ARREGLO RPAREN
+    (19) variosarreglos -> . ARREGLO COMA variosarreglos
+
+    RPAREN          shift and go to state 97
+    ARREGLO         shift and go to state 52
+
+    variosarreglos                 shift and go to state 98
+
+state 69
+
+    (23) arreglo -> NP POINT ARRAY LPAREN LCORCHER . variosarreglos2 RPAREN
+    (24) arreglo -> NP POINT ARRAY LPAREN LCORCHER . RCORCHER RPAREN
+    (20) variosarreglos2 -> . ARREGLO RCORCHER
+    (21) variosarreglos2 -> . ARREGLO COMA variosarreglos2
+
+    RCORCHER        shift and go to state 99
+    ARREGLO         shift and go to state 54
+
+    variosarreglos2                shift and go to state 100
+
+state 70
+
+    (31) arreglo -> NP POINT FUNCION LPAREN ARREGLO . RPAREN
+
+    RPAREN          shift and go to state 101
+
+
+state 71
+
+    (27) arreglo -> NP POINT FUNCION LPAREN LPAREN . variosarreglos RPAREN
+    (30) arreglo -> NP POINT FUNCION LPAREN LPAREN . RPAREN RPAREN
+    (18) variosarreglos -> . ARREGLO RPAREN
+    (19) variosarreglos -> . ARREGLO COMA variosarreglos
+
+    RPAREN          shift and go to state 102
+    ARREGLO         shift and go to state 52
+
+    variosarreglos                 shift and go to state 103
+
+state 72
+
+    (28) arreglo -> NP POINT FUNCION LPAREN LCORCHER . variosarreglos2 RPAREN
+    (29) arreglo -> NP POINT FUNCION LPAREN LCORCHER . RCORCHER RPAREN
+    (20) variosarreglos2 -> . ARREGLO RCORCHER
+    (21) variosarreglos2 -> . ARREGLO COMA variosarreglos2
+
+    RCORCHER        shift and go to state 104
+    ARREGLO         shift and go to state 54
+
+    variosarreglos2                shift and go to state 105
+
+state 73
+
+    (46) arreglo -> FUNCION LPAREN LPAREN RPAREN RPAREN .
+
+    $end            reduce using rule 46 (arreglo -> FUNCION LPAREN LPAREN RPAREN RPAREN .)
+
+
+state 74
+
+    (43) arreglo -> FUNCION LPAREN LPAREN variosarreglos RPAREN .
+
+    $end            reduce using rule 43 (arreglo -> FUNCION LPAREN LPAREN variosarreglos RPAREN .)
+
+
+state 75
+
+    (19) variosarreglos -> ARREGLO COMA . variosarreglos
+    (18) variosarreglos -> . ARREGLO RPAREN
+    (19) variosarreglos -> . ARREGLO COMA variosarreglos
+
+    ARREGLO         shift and go to state 52
+
+    variosarreglos                 shift and go to state 106
+
+state 76
+
+    (18) variosarreglos -> ARREGLO RPAREN .
+
+    RPAREN          reduce using rule 18 (variosarreglos -> ARREGLO RPAREN .)
+
+
+state 77
+
+    (45) arreglo -> FUNCION LPAREN LCORCHER RCORCHER RPAREN .
+
+    $end            reduce using rule 45 (arreglo -> FUNCION LPAREN LCORCHER RCORCHER RPAREN .)
+
+
+state 78
+
+    (21) variosarreglos2 -> ARREGLO COMA . variosarreglos2
+    (20) variosarreglos2 -> . ARREGLO RCORCHER
+    (21) variosarreglos2 -> . ARREGLO COMA variosarreglos2
+
+    ARREGLO         shift and go to state 54
+
+    variosarreglos2                shift and go to state 107
+
+state 79
+
+    (20) variosarreglos2 -> ARREGLO RCORCHER .
+
+    RPAREN          reduce using rule 20 (variosarreglos2 -> ARREGLO RCORCHER .)
+
+
+state 80
+
+    (44) arreglo -> FUNCION LPAREN LCORCHER variosarreglos2 RPAREN .
+
+    $end            reduce using rule 44 (arreglo -> FUNCION LPAREN LCORCHER variosarreglos2 RPAREN .)
+
+
+state 81
+
+    (11) importacion -> FROM NUMPY IMPORT ARRAY AS . ID
+
+    ID              shift and go to state 108
+
+
+state 82
+
+    (13) importacion -> FROM NUMPY IMPORT ID AS . ID
+
+    ID              shift and go to state 109
+
+
+state 83
+
+    (17) importacion -> FROM ID IMPORT ID AS . ID
+
+    ID              shift and go to state 110
+
+
+state 84
+
+    (48) arreglo -> NUMPY POINT ZEROS LPAREN NUMBERS COMA . NUMBERS RPAREN
+
+    NUMBERS         shift and go to state 111
+
+
+state 85
+
+    (35) arreglo -> NUMPY POINT ARRAY LPAREN LCORCHER RCORCHER . RPAREN
+
+    RPAREN          shift and go to state 112
+
+
+state 86
+
+    (34) arreglo -> NUMPY POINT ARRAY LPAREN LCORCHER variosarreglos2 . RPAREN
+
+    RPAREN          shift and go to state 113
+
+
+state 87
+
+    (37) arreglo -> NUMPY POINT ARRAY LPAREN ARREGLO RPAREN .
+
+    $end            reduce using rule 37 (arreglo -> NUMPY POINT ARRAY LPAREN ARREGLO RPAREN .)
+
+
+state 88
+
+    (36) arreglo -> NUMPY POINT ARRAY LPAREN LPAREN RPAREN . RPAREN
+
+    RPAREN          shift and go to state 114
+
+
+state 89
+
+    (33) arreglo -> NUMPY POINT ARRAY LPAREN LPAREN variosarreglos . RPAREN
+
+    RPAREN          shift and go to state 115
+
+
+state 90
+
+    (40) arreglo -> NUMPY POINT FUNCION LPAREN LCORCHER RCORCHER . RPAREN
+
+    RPAREN          shift and go to state 116
+
+
+state 91
+
+    (39) arreglo -> NUMPY POINT FUNCION LPAREN LCORCHER variosarreglos2 . RPAREN
+
+    RPAREN          shift and go to state 117
+
+
+state 92
+
+    (42) arreglo -> NUMPY POINT FUNCION LPAREN ARREGLO RPAREN .
+
+    $end            reduce using rule 42 (arreglo -> NUMPY POINT FUNCION LPAREN ARREGLO RPAREN .)
+
+
+state 93
+
+    (41) arreglo -> NUMPY POINT FUNCION LPAREN LPAREN RPAREN . RPAREN
+
+    RPAREN          shift and go to state 118
+
+
+state 94
+
+    (38) arreglo -> NUMPY POINT FUNCION LPAREN LPAREN variosarreglos . RPAREN
+
+    RPAREN          shift and go to state 119
+
+
+state 95
+
+    (32) arreglo -> NP POINT ZEROS LPAREN NUMBERS COMA . NUMBERS RPAREN
+
+    NUMBERS         shift and go to state 120
+
+
+state 96
+
+    (26) arreglo -> NP POINT ARRAY LPAREN ARREGLO RPAREN .
+
+    $end            reduce using rule 26 (arreglo -> NP POINT ARRAY LPAREN ARREGLO RPAREN .)
+
+
+state 97
+
+    (25) arreglo -> NP POINT ARRAY LPAREN LPAREN RPAREN . RPAREN
+
+    RPAREN          shift and go to state 121
+
+
+state 98
+
+    (22) arreglo -> NP POINT ARRAY LPAREN LPAREN variosarreglos . RPAREN
+
+    RPAREN          shift and go to state 122
+
+
+state 99
+
+    (24) arreglo -> NP POINT ARRAY LPAREN LCORCHER RCORCHER . RPAREN
+
+    RPAREN          shift and go to state 123
+
+
+state 100
+
+    (23) arreglo -> NP POINT ARRAY LPAREN LCORCHER variosarreglos2 . RPAREN
+
+    RPAREN          shift and go to state 124
+
+
+state 101
+
+    (31) arreglo -> NP POINT FUNCION LPAREN ARREGLO RPAREN .
+
+    $end            reduce using rule 31 (arreglo -> NP POINT FUNCION LPAREN ARREGLO RPAREN .)
+
+
+state 102
+
+    (30) arreglo -> NP POINT FUNCION LPAREN LPAREN RPAREN . RPAREN
+
+    RPAREN          shift and go to state 125
+
+
+state 103
+
+    (27) arreglo -> NP POINT FUNCION LPAREN LPAREN variosarreglos . RPAREN
+
+    RPAREN          shift and go to state 126
+
+
+state 104
+
+    (29) arreglo -> NP POINT FUNCION LPAREN LCORCHER RCORCHER . RPAREN
+
+    RPAREN          shift and go to state 127
+
+
+state 105
+
+    (28) arreglo -> NP POINT FUNCION LPAREN LCORCHER variosarreglos2 . RPAREN
+
+    RPAREN          shift and go to state 128
+
+
+state 106
+
+    (19) variosarreglos -> ARREGLO COMA variosarreglos .
+
+    RPAREN          reduce using rule 19 (variosarreglos -> ARREGLO COMA variosarreglos .)
+
+
+state 107
+
+    (21) variosarreglos2 -> ARREGLO COMA variosarreglos2 .
+
+    RPAREN          reduce using rule 21 (variosarreglos2 -> ARREGLO COMA variosarreglos2 .)
+
+
+state 108
+
+    (11) importacion -> FROM NUMPY IMPORT ARRAY AS ID .
+
+    $end            reduce using rule 11 (importacion -> FROM NUMPY IMPORT ARRAY AS ID .)
+
+
+state 109
+
+    (13) importacion -> FROM NUMPY IMPORT ID AS ID .
+
+    $end            reduce using rule 13 (importacion -> FROM NUMPY IMPORT ID AS ID .)
+
+
+state 110
+
+    (17) importacion -> FROM ID IMPORT ID AS ID .
+
+    $end            reduce using rule 17 (importacion -> FROM ID IMPORT ID AS ID .)
+
+
+state 111
+
+    (48) arreglo -> NUMPY POINT ZEROS LPAREN NUMBERS COMA NUMBERS . RPAREN
+
+    RPAREN          shift and go to state 129
+
+
+state 112
+
+    (35) arreglo -> NUMPY POINT ARRAY LPAREN LCORCHER RCORCHER RPAREN .
+
+    $end            reduce using rule 35 (arreglo -> NUMPY POINT ARRAY LPAREN LCORCHER RCORCHER RPAREN .)
+
+
+state 113
+
+    (34) arreglo -> NUMPY POINT ARRAY LPAREN LCORCHER variosarreglos2 RPAREN .
+
+    $end            reduce using rule 34 (arreglo -> NUMPY POINT ARRAY LPAREN LCORCHER variosarreglos2 RPAREN .)
+
+
+state 114
+
+    (36) arreglo -> NUMPY POINT ARRAY LPAREN LPAREN RPAREN RPAREN .
+
+    $end            reduce using rule 36 (arreglo -> NUMPY POINT ARRAY LPAREN LPAREN RPAREN RPAREN .)
+
+
+state 115
+
+    (33) arreglo -> NUMPY POINT ARRAY LPAREN LPAREN variosarreglos RPAREN .
+
+    $end            reduce using rule 33 (arreglo -> NUMPY POINT ARRAY LPAREN LPAREN variosarreglos RPAREN .)
+
+
+state 116
+
+    (40) arreglo -> NUMPY POINT FUNCION LPAREN LCORCHER RCORCHER RPAREN .
+
+    $end            reduce using rule 40 (arreglo -> NUMPY POINT FUNCION LPAREN LCORCHER RCORCHER RPAREN .)
+
+
+state 117
+
+    (39) arreglo -> NUMPY POINT FUNCION LPAREN LCORCHER variosarreglos2 RPAREN .
+
+    $end            reduce using rule 39 (arreglo -> NUMPY POINT FUNCION LPAREN LCORCHER variosarreglos2 RPAREN .)
+
+
+state 118
+
+    (41) arreglo -> NUMPY POINT FUNCION LPAREN LPAREN RPAREN RPAREN .
+
+    $end            reduce using rule 41 (arreglo -> NUMPY POINT FUNCION LPAREN LPAREN RPAREN RPAREN .)
+
+
+state 119
+
+    (38) arreglo -> NUMPY POINT FUNCION LPAREN LPAREN variosarreglos RPAREN .
+
+    $end            reduce using rule 38 (arreglo -> NUMPY POINT FUNCION LPAREN LPAREN variosarreglos RPAREN .)
+
+
+state 120
+
+    (32) arreglo -> NP POINT ZEROS LPAREN NUMBERS COMA NUMBERS . RPAREN
+
+    RPAREN          shift and go to state 130
+
+
+state 121
+
+    (25) arreglo -> NP POINT ARRAY LPAREN LPAREN RPAREN RPAREN .
+
+    $end            reduce using rule 25 (arreglo -> NP POINT ARRAY LPAREN LPAREN RPAREN RPAREN .)
+
+
+state 122
+
+    (22) arreglo -> NP POINT ARRAY LPAREN LPAREN variosarreglos RPAREN .
+
+    $end            reduce using rule 22 (arreglo -> NP POINT ARRAY LPAREN LPAREN variosarreglos RPAREN .)
+
+
+state 123
+
+    (24) arreglo -> NP POINT ARRAY LPAREN LCORCHER RCORCHER RPAREN .
+
+    $end            reduce using rule 24 (arreglo -> NP POINT ARRAY LPAREN LCORCHER RCORCHER RPAREN .)
+
+
+state 124
+
+    (23) arreglo -> NP POINT ARRAY LPAREN LCORCHER variosarreglos2 RPAREN .
+
+    $end            reduce using rule 23 (arreglo -> NP POINT ARRAY LPAREN LCORCHER variosarreglos2 RPAREN .)
+
+
+state 125
+
+    (30) arreglo -> NP POINT FUNCION LPAREN LPAREN RPAREN RPAREN .
+
+    $end            reduce using rule 30 (arreglo -> NP POINT FUNCION LPAREN LPAREN RPAREN RPAREN .)
+
+
+state 126
+
+    (27) arreglo -> NP POINT FUNCION LPAREN LPAREN variosarreglos RPAREN .
+
+    $end            reduce using rule 27 (arreglo -> NP POINT FUNCION LPAREN LPAREN variosarreglos RPAREN .)
+
+
+state 127
+
+    (29) arreglo -> NP POINT FUNCION LPAREN LCORCHER RCORCHER RPAREN .
+
+    $end            reduce using rule 29 (arreglo -> NP POINT FUNCION LPAREN LCORCHER RCORCHER RPAREN .)
+
+
+state 128
+
+    (28) arreglo -> NP POINT FUNCION LPAREN LCORCHER variosarreglos2 RPAREN .
+
+    $end            reduce using rule 28 (arreglo -> NP POINT FUNCION LPAREN LCORCHER variosarreglos2 RPAREN .)
+
+
+state 129
+
+    (48) arreglo -> NUMPY POINT ZEROS LPAREN NUMBERS COMA NUMBERS RPAREN .
+
+    $end            reduce using rule 48 (arreglo -> NUMPY POINT ZEROS LPAREN NUMBERS COMA NUMBERS RPAREN .)
+
+
+state 130
+
+    (32) arreglo -> NP POINT ZEROS LPAREN NUMBERS COMA NUMBERS RPAREN .
+
+    $end            reduce using rule 32 (arreglo -> NP POINT ZEROS LPAREN NUMBERS COMA NUMBERS RPAREN .)
+

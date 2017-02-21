@@ -6,7 +6,7 @@ import ply.yacc as yacc
 
 def nivel1():
     print("*" * 20 + "NIVEL 1" + "*" * 20)
-    print(" "*4+"Importación de la librería de numpy")
+    print(" "*4+"Importacion de la libreria de numpy")
 
     global validador
     validador = True

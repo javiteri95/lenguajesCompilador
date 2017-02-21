@@ -1,55 +1,58 @@
-Created by PLY version 3.9 (http://www.dabeaz.com/ply)
+Created by PLY version 3.10 (http://www.dabeaz.com/ply)
 
 Unused terminals:
 
-    RPAREN
-    SIZE
-    OPERADOR
-    AS
-    LPAREN
-    BOOLEAN
-    ARREGLO
-    FROM
-    COMA
-    ARRAY
-    ZEROS
-    POINT
-    IMPORT
-    SHAPE
     RESHAPE
     NUMPY
+    RPAREN
+    POINT
+    OPERADOR
+    SHAPE
+    DOUBLEPOINT
+    IMPORT
+    ARRAY
+    AS
+    ZEROS
+    LPAREN
+    ARREGLO_BI
+    SIZE
+    FROM
+    BOOLEAN
 
 Grammar
 
 Rule 0     S' -> expression
-Rule 1     expression -> ID LCORCHER NUMBERS DOUBLEPOINT RCORCHER
-Rule 2     expression -> ID LCORCHER NUMBERS DOUBLEPOINT NUMBERS RCORCHER
-Rule 3     expression -> ID LCORCHER NUMBERS DOUBLEPOINT NUMBERS DOUBLEPOINT RCORCHER
-Rule 4     expression -> ID LCORCHER NUMBERS DOUBLEPOINT NUMBERS DOUBLEPOINT NUMBERS RCORCHER
-Rule 5     expression -> ID EQUALS ID LCORCHER NUMBERS DOUBLEPOINT RCORCHER
-Rule 6     expression -> ID EQUALS ID LCORCHER NUMBERS DOUBLEPOINT NUMBERS RCORCHER
-Rule 7     expression -> ID EQUALS ID LCORCHER NUMBERS DOUBLEPOINT NUMBERS DOUBLEPOINT RCORCHER
-Rule 8     expression -> ID EQUALS ID LCORCHER NUMBERS DOUBLEPOINT NUMBERS DOUBLEPOINT NUMBERS RCORCHER
+Rule 1     expression -> ID ARREGLO
+Rule 2     expression -> ID ARREGLO ARREGLO
+Rule 3     expression -> ID EQUALS ID ARREGLO
+Rule 4     expression -> ID EQUALS ID ARREGLO ARREGLO
+Rule 5     expression -> ID LCORCHER NUMBERS RCORCHER
+Rule 6     expression -> ID LCORCHER NUMBERS COMA NUMBERS RCORCHER
+Rule 7     expression -> ID LCORCHER NUMBERS RCORCHER LCORCHER NUMBERS RCORCHER
+Rule 8     expression -> ID EQUALS ID LCORCHER NUMBERS RCORCHER
+Rule 9     expression -> ID EQUALS ID LCORCHER NUMBERS COMA NUMBERS RCORCHER
+Rule 10    expression -> ID EQUALS ID LCORCHER NUMBERS RCORCHER LCORCHER NUMBERS RCORCHER
 
 Terminals, with rules where they appear
 
 ARRAY                : 
-ARREGLO              : 
+ARREGLO              : 1 2 2 3 4 4
+ARREGLO_BI           : 
 AS                   : 
 BOOLEAN              : 
-COMA                 : 
-DOUBLEPOINT          : 1 2 3 3 4 4 5 6 7 7 8 8
-EQUALS               : 5 6 7 8
+COMA                 : 6 9
+DOUBLEPOINT          : 
+EQUALS               : 3 4 8 9 10
 FROM                 : 
-ID                   : 1 2 3 4 5 5 6 6 7 7 8 8
+ID                   : 1 2 3 3 4 4 5 6 7 8 8 9 9 10 10
 IMPORT               : 
-LCORCHER             : 1 2 3 4 5 6 7 8
+LCORCHER             : 5 6 7 7 8 9 10 10
 LPAREN               : 
-NUMBERS              : 1 2 2 3 3 4 4 4 5 6 6 7 7 8 8 8
+NUMBERS              : 5 6 6 7 7 8 9 9 10 10
 NUMPY                : 
 OPERADOR             : 
 POINT                : 
-RCORCHER             : 1 2 3 4 5 6 7 8
+RCORCHER             : 5 6 7 7 8 9 10 10
 RESHAPE              : 
 RPAREN               : 
 SHAPE                : 
@@ -66,226 +69,236 @@ Parsing method: LALR
 state 0
 
     (0) S' -> . expression
-    (1) expression -> . ID LCORCHER NUMBERS DOUBLEPOINT RCORCHER
-    (2) expression -> . ID LCORCHER NUMBERS DOUBLEPOINT NUMBERS RCORCHER
-    (3) expression -> . ID LCORCHER NUMBERS DOUBLEPOINT NUMBERS DOUBLEPOINT RCORCHER
-    (4) expression -> . ID LCORCHER NUMBERS DOUBLEPOINT NUMBERS DOUBLEPOINT NUMBERS RCORCHER
-    (5) expression -> . ID EQUALS ID LCORCHER NUMBERS DOUBLEPOINT RCORCHER
-    (6) expression -> . ID EQUALS ID LCORCHER NUMBERS DOUBLEPOINT NUMBERS RCORCHER
-    (7) expression -> . ID EQUALS ID LCORCHER NUMBERS DOUBLEPOINT NUMBERS DOUBLEPOINT RCORCHER
-    (8) expression -> . ID EQUALS ID LCORCHER NUMBERS DOUBLEPOINT NUMBERS DOUBLEPOINT NUMBERS RCORCHER
+    (1) expression -> . ID ARREGLO
+    (2) expression -> . ID ARREGLO ARREGLO
+    (3) expression -> . ID EQUALS ID ARREGLO
+    (4) expression -> . ID EQUALS ID ARREGLO ARREGLO
+    (5) expression -> . ID LCORCHER NUMBERS RCORCHER
+    (6) expression -> . ID LCORCHER NUMBERS COMA NUMBERS RCORCHER
+    (7) expression -> . ID LCORCHER NUMBERS RCORCHER LCORCHER NUMBERS RCORCHER
+    (8) expression -> . ID EQUALS ID LCORCHER NUMBERS RCORCHER
+    (9) expression -> . ID EQUALS ID LCORCHER NUMBERS COMA NUMBERS RCORCHER
+    (10) expression -> . ID EQUALS ID LCORCHER NUMBERS RCORCHER LCORCHER NUMBERS RCORCHER
 
-    ID              shift and go to state 1
+    ID              shift and go to state 2
 
-    expression                     shift and go to state 2
+    expression                     shift and go to state 1
 
 state 1
-
-    (1) expression -> ID . LCORCHER NUMBERS DOUBLEPOINT RCORCHER
-    (2) expression -> ID . LCORCHER NUMBERS DOUBLEPOINT NUMBERS RCORCHER
-    (3) expression -> ID . LCORCHER NUMBERS DOUBLEPOINT NUMBERS DOUBLEPOINT RCORCHER
-    (4) expression -> ID . LCORCHER NUMBERS DOUBLEPOINT NUMBERS DOUBLEPOINT NUMBERS RCORCHER
-    (5) expression -> ID . EQUALS ID LCORCHER NUMBERS DOUBLEPOINT RCORCHER
-    (6) expression -> ID . EQUALS ID LCORCHER NUMBERS DOUBLEPOINT NUMBERS RCORCHER
-    (7) expression -> ID . EQUALS ID LCORCHER NUMBERS DOUBLEPOINT NUMBERS DOUBLEPOINT RCORCHER
-    (8) expression -> ID . EQUALS ID LCORCHER NUMBERS DOUBLEPOINT NUMBERS DOUBLEPOINT NUMBERS RCORCHER
-
-    LCORCHER        shift and go to state 4
-    EQUALS          shift and go to state 3
-
-
-state 2
 
     (0) S' -> expression .
 
 
 
+state 2
+
+    (1) expression -> ID . ARREGLO
+    (2) expression -> ID . ARREGLO ARREGLO
+    (3) expression -> ID . EQUALS ID ARREGLO
+    (4) expression -> ID . EQUALS ID ARREGLO ARREGLO
+    (5) expression -> ID . LCORCHER NUMBERS RCORCHER
+    (6) expression -> ID . LCORCHER NUMBERS COMA NUMBERS RCORCHER
+    (7) expression -> ID . LCORCHER NUMBERS RCORCHER LCORCHER NUMBERS RCORCHER
+    (8) expression -> ID . EQUALS ID LCORCHER NUMBERS RCORCHER
+    (9) expression -> ID . EQUALS ID LCORCHER NUMBERS COMA NUMBERS RCORCHER
+    (10) expression -> ID . EQUALS ID LCORCHER NUMBERS RCORCHER LCORCHER NUMBERS RCORCHER
+
+    ARREGLO         shift and go to state 4
+    EQUALS          shift and go to state 3
+    LCORCHER        shift and go to state 5
+
+
 state 3
 
-    (5) expression -> ID EQUALS . ID LCORCHER NUMBERS DOUBLEPOINT RCORCHER
-    (6) expression -> ID EQUALS . ID LCORCHER NUMBERS DOUBLEPOINT NUMBERS RCORCHER
-    (7) expression -> ID EQUALS . ID LCORCHER NUMBERS DOUBLEPOINT NUMBERS DOUBLEPOINT RCORCHER
-    (8) expression -> ID EQUALS . ID LCORCHER NUMBERS DOUBLEPOINT NUMBERS DOUBLEPOINT NUMBERS RCORCHER
+    (3) expression -> ID EQUALS . ID ARREGLO
+    (4) expression -> ID EQUALS . ID ARREGLO ARREGLO
+    (8) expression -> ID EQUALS . ID LCORCHER NUMBERS RCORCHER
+    (9) expression -> ID EQUALS . ID LCORCHER NUMBERS COMA NUMBERS RCORCHER
+    (10) expression -> ID EQUALS . ID LCORCHER NUMBERS RCORCHER LCORCHER NUMBERS RCORCHER
 
-    ID              shift and go to state 5
+    ID              shift and go to state 6
 
 
 state 4
 
-    (1) expression -> ID LCORCHER . NUMBERS DOUBLEPOINT RCORCHER
-    (2) expression -> ID LCORCHER . NUMBERS DOUBLEPOINT NUMBERS RCORCHER
-    (3) expression -> ID LCORCHER . NUMBERS DOUBLEPOINT NUMBERS DOUBLEPOINT RCORCHER
-    (4) expression -> ID LCORCHER . NUMBERS DOUBLEPOINT NUMBERS DOUBLEPOINT NUMBERS RCORCHER
+    (1) expression -> ID ARREGLO .
+    (2) expression -> ID ARREGLO . ARREGLO
 
-    NUMBERS         shift and go to state 6
+    $end            reduce using rule 1 (expression -> ID ARREGLO .)
+    ARREGLO         shift and go to state 7
 
 
 state 5
 
-    (5) expression -> ID EQUALS ID . LCORCHER NUMBERS DOUBLEPOINT RCORCHER
-    (6) expression -> ID EQUALS ID . LCORCHER NUMBERS DOUBLEPOINT NUMBERS RCORCHER
-    (7) expression -> ID EQUALS ID . LCORCHER NUMBERS DOUBLEPOINT NUMBERS DOUBLEPOINT RCORCHER
-    (8) expression -> ID EQUALS ID . LCORCHER NUMBERS DOUBLEPOINT NUMBERS DOUBLEPOINT NUMBERS RCORCHER
+    (5) expression -> ID LCORCHER . NUMBERS RCORCHER
+    (6) expression -> ID LCORCHER . NUMBERS COMA NUMBERS RCORCHER
+    (7) expression -> ID LCORCHER . NUMBERS RCORCHER LCORCHER NUMBERS RCORCHER
 
-    LCORCHER        shift and go to state 7
+    NUMBERS         shift and go to state 8
 
 
 state 6
 
-    (1) expression -> ID LCORCHER NUMBERS . DOUBLEPOINT RCORCHER
-    (2) expression -> ID LCORCHER NUMBERS . DOUBLEPOINT NUMBERS RCORCHER
-    (3) expression -> ID LCORCHER NUMBERS . DOUBLEPOINT NUMBERS DOUBLEPOINT RCORCHER
-    (4) expression -> ID LCORCHER NUMBERS . DOUBLEPOINT NUMBERS DOUBLEPOINT NUMBERS RCORCHER
+    (3) expression -> ID EQUALS ID . ARREGLO
+    (4) expression -> ID EQUALS ID . ARREGLO ARREGLO
+    (8) expression -> ID EQUALS ID . LCORCHER NUMBERS RCORCHER
+    (9) expression -> ID EQUALS ID . LCORCHER NUMBERS COMA NUMBERS RCORCHER
+    (10) expression -> ID EQUALS ID . LCORCHER NUMBERS RCORCHER LCORCHER NUMBERS RCORCHER
 
-    DOUBLEPOINT     shift and go to state 8
+    ARREGLO         shift and go to state 9
+    LCORCHER        shift and go to state 10
 
 
 state 7
 
-    (5) expression -> ID EQUALS ID LCORCHER . NUMBERS DOUBLEPOINT RCORCHER
-    (6) expression -> ID EQUALS ID LCORCHER . NUMBERS DOUBLEPOINT NUMBERS RCORCHER
-    (7) expression -> ID EQUALS ID LCORCHER . NUMBERS DOUBLEPOINT NUMBERS DOUBLEPOINT RCORCHER
-    (8) expression -> ID EQUALS ID LCORCHER . NUMBERS DOUBLEPOINT NUMBERS DOUBLEPOINT NUMBERS RCORCHER
+    (2) expression -> ID ARREGLO ARREGLO .
 
-    NUMBERS         shift and go to state 9
+    $end            reduce using rule 2 (expression -> ID ARREGLO ARREGLO .)
 
 
 state 8
 
-    (1) expression -> ID LCORCHER NUMBERS DOUBLEPOINT . RCORCHER
-    (2) expression -> ID LCORCHER NUMBERS DOUBLEPOINT . NUMBERS RCORCHER
-    (3) expression -> ID LCORCHER NUMBERS DOUBLEPOINT . NUMBERS DOUBLEPOINT RCORCHER
-    (4) expression -> ID LCORCHER NUMBERS DOUBLEPOINT . NUMBERS DOUBLEPOINT NUMBERS RCORCHER
+    (5) expression -> ID LCORCHER NUMBERS . RCORCHER
+    (6) expression -> ID LCORCHER NUMBERS . COMA NUMBERS RCORCHER
+    (7) expression -> ID LCORCHER NUMBERS . RCORCHER LCORCHER NUMBERS RCORCHER
 
-    RCORCHER        shift and go to state 11
-    NUMBERS         shift and go to state 10
+    RCORCHER        shift and go to state 12
+    COMA            shift and go to state 11
 
 
 state 9
 
-    (5) expression -> ID EQUALS ID LCORCHER NUMBERS . DOUBLEPOINT RCORCHER
-    (6) expression -> ID EQUALS ID LCORCHER NUMBERS . DOUBLEPOINT NUMBERS RCORCHER
-    (7) expression -> ID EQUALS ID LCORCHER NUMBERS . DOUBLEPOINT NUMBERS DOUBLEPOINT RCORCHER
-    (8) expression -> ID EQUALS ID LCORCHER NUMBERS . DOUBLEPOINT NUMBERS DOUBLEPOINT NUMBERS RCORCHER
+    (3) expression -> ID EQUALS ID ARREGLO .
+    (4) expression -> ID EQUALS ID ARREGLO . ARREGLO
 
-    DOUBLEPOINT     shift and go to state 12
+    $end            reduce using rule 3 (expression -> ID EQUALS ID ARREGLO .)
+    ARREGLO         shift and go to state 13
 
 
 state 10
 
-    (2) expression -> ID LCORCHER NUMBERS DOUBLEPOINT NUMBERS . RCORCHER
-    (3) expression -> ID LCORCHER NUMBERS DOUBLEPOINT NUMBERS . DOUBLEPOINT RCORCHER
-    (4) expression -> ID LCORCHER NUMBERS DOUBLEPOINT NUMBERS . DOUBLEPOINT NUMBERS RCORCHER
+    (8) expression -> ID EQUALS ID LCORCHER . NUMBERS RCORCHER
+    (9) expression -> ID EQUALS ID LCORCHER . NUMBERS COMA NUMBERS RCORCHER
+    (10) expression -> ID EQUALS ID LCORCHER . NUMBERS RCORCHER LCORCHER NUMBERS RCORCHER
 
-    RCORCHER        shift and go to state 14
-    DOUBLEPOINT     shift and go to state 13
+    NUMBERS         shift and go to state 14
 
 
 state 11
 
-    (1) expression -> ID LCORCHER NUMBERS DOUBLEPOINT RCORCHER .
+    (6) expression -> ID LCORCHER NUMBERS COMA . NUMBERS RCORCHER
 
-    $end            reduce using rule 1 (expression -> ID LCORCHER NUMBERS DOUBLEPOINT RCORCHER .)
+    NUMBERS         shift and go to state 15
 
 
 state 12
 
-    (5) expression -> ID EQUALS ID LCORCHER NUMBERS DOUBLEPOINT . RCORCHER
-    (6) expression -> ID EQUALS ID LCORCHER NUMBERS DOUBLEPOINT . NUMBERS RCORCHER
-    (7) expression -> ID EQUALS ID LCORCHER NUMBERS DOUBLEPOINT . NUMBERS DOUBLEPOINT RCORCHER
-    (8) expression -> ID EQUALS ID LCORCHER NUMBERS DOUBLEPOINT . NUMBERS DOUBLEPOINT NUMBERS RCORCHER
+    (5) expression -> ID LCORCHER NUMBERS RCORCHER .
+    (7) expression -> ID LCORCHER NUMBERS RCORCHER . LCORCHER NUMBERS RCORCHER
 
-    RCORCHER        shift and go to state 16
-    NUMBERS         shift and go to state 15
+    $end            reduce using rule 5 (expression -> ID LCORCHER NUMBERS RCORCHER .)
+    LCORCHER        shift and go to state 16
 
 
 state 13
 
-    (3) expression -> ID LCORCHER NUMBERS DOUBLEPOINT NUMBERS DOUBLEPOINT . RCORCHER
-    (4) expression -> ID LCORCHER NUMBERS DOUBLEPOINT NUMBERS DOUBLEPOINT . NUMBERS RCORCHER
+    (4) expression -> ID EQUALS ID ARREGLO ARREGLO .
 
-    RCORCHER        shift and go to state 18
-    NUMBERS         shift and go to state 17
+    $end            reduce using rule 4 (expression -> ID EQUALS ID ARREGLO ARREGLO .)
 
 
 state 14
 
-    (2) expression -> ID LCORCHER NUMBERS DOUBLEPOINT NUMBERS RCORCHER .
+    (8) expression -> ID EQUALS ID LCORCHER NUMBERS . RCORCHER
+    (9) expression -> ID EQUALS ID LCORCHER NUMBERS . COMA NUMBERS RCORCHER
+    (10) expression -> ID EQUALS ID LCORCHER NUMBERS . RCORCHER LCORCHER NUMBERS RCORCHER
 
-    $end            reduce using rule 2 (expression -> ID LCORCHER NUMBERS DOUBLEPOINT NUMBERS RCORCHER .)
+    RCORCHER        shift and go to state 17
+    COMA            shift and go to state 18
 
 
 state 15
 
-    (6) expression -> ID EQUALS ID LCORCHER NUMBERS DOUBLEPOINT NUMBERS . RCORCHER
-    (7) expression -> ID EQUALS ID LCORCHER NUMBERS DOUBLEPOINT NUMBERS . DOUBLEPOINT RCORCHER
-    (8) expression -> ID EQUALS ID LCORCHER NUMBERS DOUBLEPOINT NUMBERS . DOUBLEPOINT NUMBERS RCORCHER
+    (6) expression -> ID LCORCHER NUMBERS COMA NUMBERS . RCORCHER
 
-    RCORCHER        shift and go to state 20
-    DOUBLEPOINT     shift and go to state 19
+    RCORCHER        shift and go to state 19
 
 
 state 16
 
-    (5) expression -> ID EQUALS ID LCORCHER NUMBERS DOUBLEPOINT RCORCHER .
+    (7) expression -> ID LCORCHER NUMBERS RCORCHER LCORCHER . NUMBERS RCORCHER
 
-    $end            reduce using rule 5 (expression -> ID EQUALS ID LCORCHER NUMBERS DOUBLEPOINT RCORCHER .)
+    NUMBERS         shift and go to state 20
 
 
 state 17
 
-    (4) expression -> ID LCORCHER NUMBERS DOUBLEPOINT NUMBERS DOUBLEPOINT NUMBERS . RCORCHER
+    (8) expression -> ID EQUALS ID LCORCHER NUMBERS RCORCHER .
+    (10) expression -> ID EQUALS ID LCORCHER NUMBERS RCORCHER . LCORCHER NUMBERS RCORCHER
 
-    RCORCHER        shift and go to state 21
+    $end            reduce using rule 8 (expression -> ID EQUALS ID LCORCHER NUMBERS RCORCHER .)
+    LCORCHER        shift and go to state 21
 
 
 state 18
 
-    (3) expression -> ID LCORCHER NUMBERS DOUBLEPOINT NUMBERS DOUBLEPOINT RCORCHER .
+    (9) expression -> ID EQUALS ID LCORCHER NUMBERS COMA . NUMBERS RCORCHER
 
-    $end            reduce using rule 3 (expression -> ID LCORCHER NUMBERS DOUBLEPOINT NUMBERS DOUBLEPOINT RCORCHER .)
+    NUMBERS         shift and go to state 22
 
 
 state 19
 
-    (7) expression -> ID EQUALS ID LCORCHER NUMBERS DOUBLEPOINT NUMBERS DOUBLEPOINT . RCORCHER
-    (8) expression -> ID EQUALS ID LCORCHER NUMBERS DOUBLEPOINT NUMBERS DOUBLEPOINT . NUMBERS RCORCHER
+    (6) expression -> ID LCORCHER NUMBERS COMA NUMBERS RCORCHER .
 
-    RCORCHER        shift and go to state 23
-    NUMBERS         shift and go to state 22
+    $end            reduce using rule 6 (expression -> ID LCORCHER NUMBERS COMA NUMBERS RCORCHER .)
 
 
 state 20
 
-    (6) expression -> ID EQUALS ID LCORCHER NUMBERS DOUBLEPOINT NUMBERS RCORCHER .
+    (7) expression -> ID LCORCHER NUMBERS RCORCHER LCORCHER NUMBERS . RCORCHER
 
-    $end            reduce using rule 6 (expression -> ID EQUALS ID LCORCHER NUMBERS DOUBLEPOINT NUMBERS RCORCHER .)
+    RCORCHER        shift and go to state 23
 
 
 state 21
 
-    (4) expression -> ID LCORCHER NUMBERS DOUBLEPOINT NUMBERS DOUBLEPOINT NUMBERS RCORCHER .
+    (10) expression -> ID EQUALS ID LCORCHER NUMBERS RCORCHER LCORCHER . NUMBERS RCORCHER
 
-    $end            reduce using rule 4 (expression -> ID LCORCHER NUMBERS DOUBLEPOINT NUMBERS DOUBLEPOINT NUMBERS RCORCHER .)
+    NUMBERS         shift and go to state 24
 
 
 state 22
 
-    (8) expression -> ID EQUALS ID LCORCHER NUMBERS DOUBLEPOINT NUMBERS DOUBLEPOINT NUMBERS . RCORCHER
+    (9) expression -> ID EQUALS ID LCORCHER NUMBERS COMA NUMBERS . RCORCHER
 
-    RCORCHER        shift and go to state 24
+    RCORCHER        shift and go to state 25
 
 
 state 23
 
-    (7) expression -> ID EQUALS ID LCORCHER NUMBERS DOUBLEPOINT NUMBERS DOUBLEPOINT RCORCHER .
+    (7) expression -> ID LCORCHER NUMBERS RCORCHER LCORCHER NUMBERS RCORCHER .
 
-    $end            reduce using rule 7 (expression -> ID EQUALS ID LCORCHER NUMBERS DOUBLEPOINT NUMBERS DOUBLEPOINT RCORCHER .)
+    $end            reduce using rule 7 (expression -> ID LCORCHER NUMBERS RCORCHER LCORCHER NUMBERS RCORCHER .)
 
 
 state 24
 
-    (8) expression -> ID EQUALS ID LCORCHER NUMBERS DOUBLEPOINT NUMBERS DOUBLEPOINT NUMBERS RCORCHER .
+    (10) expression -> ID EQUALS ID LCORCHER NUMBERS RCORCHER LCORCHER NUMBERS . RCORCHER
 
-    $end            reduce using rule 8 (expression -> ID EQUALS ID LCORCHER NUMBERS DOUBLEPOINT NUMBERS DOUBLEPOINT NUMBERS RCORCHER .)
+    RCORCHER        shift and go to state 26
+
+
+state 25
+
+    (9) expression -> ID EQUALS ID LCORCHER NUMBERS COMA NUMBERS RCORCHER .
+
+    $end            reduce using rule 9 (expression -> ID EQUALS ID LCORCHER NUMBERS COMA NUMBERS RCORCHER .)
+
+
+state 26
+
+    (10) expression -> ID EQUALS ID LCORCHER NUMBERS RCORCHER LCORCHER NUMBERS RCORCHER .
+
+    $end            reduce using rule 10 (expression -> ID EQUALS ID LCORCHER NUMBERS RCORCHER LCORCHER NUMBERS RCORCHER .)
 
