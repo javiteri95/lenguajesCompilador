@@ -109,7 +109,6 @@ def p_importacion(p):
     global validadorSin
     global validadorTok
     if len(p) == 3:
-        print p
         if p[2] == 'numpy':
             reserved[p[2]] = 'NUMPY'
             reserved['array'] = 'ARRAY'
@@ -326,7 +325,7 @@ while True:
     error = ''
     contador = [0,0]
     try:
-        s = str(raw_input("-> "))
+        s = str(input("-> "))
     except EOFError:
         break
     if not s: continue
