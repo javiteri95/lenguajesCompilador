@@ -10,7 +10,7 @@ reserved = {
 }
 
 tokens = ['EQUALS', 'ARREGLO', 'LPAREN', 'RPAREN', 'FUNCION',
-          'NUMBERS', 'OPERADOR', 'NUMPY', 'POINT', 'ARRAY', 'COMA','RCORCHER', 'LCORCHER', 'NP', 'VAR', 'ID'] + list(
+          'NUMBERS', 'OPERADOR', 'NUMPY', 'POINT', 'ARRAY', 'COMA','RCORCHER', 'LCORCHER', 'NP', 'VAR', 'ID', 'DOUBLEPOINT','BOOLEAN'] + list(
     reserved.values())
 
 # Tokens
@@ -24,8 +24,8 @@ t_POINT = r'\.'
 t_COMA = r','
 t_LCORCHER = r'\['
 t_RCORCHER = r'\]'
-#t_DOUBLEPOINT = r':'
-#t_BOOLEAN = r'>|<|==|!='
+t_DOUBLEPOINT = r':'
+t_BOOLEAN = r'>|<|==|!='
 t_ignore_COMMENT = r'\#.*'
 
 def t_ID(t):
@@ -66,6 +66,7 @@ def t_error(t):
 # Build the lexer
 lexer = lex.lex()
 
+
 def p_statement(p):
     '''statement  : arreglo
                   | ID EQUALS arreglo
@@ -74,14 +75,23 @@ def p_statement(p):
                   | ID EQUALS operacion
                   | VAR EQUALS operacion
                   | importacion
+                  | indexacion
+                  | ID EQUALS indexacion
+                  | VAR EQUALS indexacion
                   '''
     global contador
+    global validadorVariable
     if(len(p) == 2):
+        validadorVariable = False
         p[0] = p[1]
     elif len(p)== 4:
+        validadorVariable = True
+        print(2)
+        print(p)
         reserved[p[1]] = 'VAR'
         p[0]=p[1] + p[2] + p[3]
         numArray[p[1]] = contador
+        print(contador)
 
 def p_importacion(p):
     '''importacion : IMPORT NUMPY AS ID
@@ -244,40 +254,45 @@ def p_operacion(p):
     p[0] = p[1] + p[2] + p[3] + '3'
 
 
-   # def p_slicer(p):
- #       '''slicer : NUMBERS DOUBLEPOINT NUMBERS
-  #                 | NUMBERS DOUBLEPOINT
- #                  | DOUBLEPOINT NUMBERS
-#                   | DOUBLEPOINT'''
-#        if (len(p) == 4):
-#            p[0] = p[1] + p[2] + p[3]
-#        elif len(p) == 3:
-#            p[0] = p[1] + p[2]
-#       elif len(p) == 2:
-#            p[0] = p[1]
+def p_slicer(p):
+    '''slicer :  NUMBERS DOUBLEPOINT NUMBERS
+               | NUMBERS DOUBLEPOINT
+               | DOUBLEPOINT NUMBERS
+               | DOUBLEPOINT
+               '''
+    if (len(p) == 4):
+        p[0] = p[1] + p[2] + p[3]
+    elif len(p) == 3:
+        p[0] = p[1] + p[2]
+    elif len(p) == 2:
+        p[0] = p[1]
 
-#    def p_indice(p):
- #       '''indice : NUMBERS COMA NUMBERS
-  #                | NUMBERS
-   #               | NUMBERS COMA
-    #              | COMA NUMBERS
-     #             | slicer COMA slicer
-      #            | slicer COMA
-       #           | COMA slicer
-        #          | NUMBERS COMA slicer
-         #         | slicer COMA NUMBERS'''
-      #  if (len(p) == 4):
-       #     p[0] = p[1] + p[2] + p[3]
-      #  elif len(p) == 3:
-       #     p[0] = p[1] + p[2]
-      #  elif len(p) == 2:
-    #        p[0] = p[1]
 
-#   def p_indexacion(p):
- #       '''indexacion : VAR LCORCHER indice RCORCHER
-  #                    '''
-#
- #       p[0] = p[1] + p[2] + p[3] + p[4] + "6"
+def p_indice(p):
+    '''indice : NUMBERS COMA NUMBERS
+              | NUMBERS
+              | NUMBERS COMA
+              | COMA NUMBERS
+              | slicer COMA slicer
+              | slicer COMA
+              | COMA slicer
+              | NUMBERS COMA slicer
+              | slicer COMA NUMBERS'''
+    if (len(p) == 4):
+        p[0] = p[1] + p[2] + p[3]
+    elif len(p) == 3:
+        p[0] = p[1] + p[2]
+    elif len(p) == 2:
+        p[0] = p[1]
+
+
+def p_indexacion(p):
+    '''indexacion : VAR LCORCHER indice RCORCHER
+                  '''
+
+    p[0] = p[1] + p[2] + p[3] + p[4] + "6"
+
+
 
 
 
@@ -294,6 +309,7 @@ parser = yacc.yacc()
 global validadorTok
 global validadorSin
 global validadorSe
+global validadorVariable
 global error
 
 
@@ -301,7 +317,7 @@ numArray = {}
 nuevoAoM = len(numArray)
 
 while True:
-
+    validadorVariable = False
     validadorSe = False
     validadorSin = False
     validadorTok = False
@@ -329,10 +345,14 @@ while True:
 
         print('')
         print("CORRECTO")
-        if (len(numArray) != nuevoAoM):
+        if ((len(numArray) != nuevoAoM) and validadorVariable):
             var = str(result).split('=')
             print('')
             print('Se ha creado un/a Array/Matriz ' + var[0] + ' de dimensiones (',numArray[var[0]],' )')
+        elif ((len(numArray) != nuevoAoM) and not validadorVariable):
+            print('')
+            print('Se ha creado un/a Array/Matriz anonimo ')
+
         print('')
 
     elif(validadorSe & (not validadorSin)) & (not validadorTok):
