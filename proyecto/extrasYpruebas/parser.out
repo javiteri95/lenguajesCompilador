@@ -1,26 +1,5 @@
 Created by PLY version 3.10 (http://www.dabeaz.com/ply)
 
-Unused terminals:
-
-    RESHAPE
-    RCORCHER
-    RPAREN
-    POINT
-    OPERADOR
-    LCORCHER
-    ARREGLO
-    SHAPE
-    NUMBERS
-    DOUBLEPOINT
-    ARRAY
-    EQUALS
-    ZEROS
-    LPAREN
-    COMA
-    ARREGLO_BI
-    SIZE
-    BOOLEAN
-
 Grammar
 
 Rule 0     S' -> expression
@@ -29,29 +8,11 @@ Rule 2     expression -> IMPORT ID FROM ID
 
 Terminals, with rules where they appear
 
-ARRAY                : 
-ARREGLO              : 
-ARREGLO_BI           : 
 AS                   : 1
-BOOLEAN              : 
-COMA                 : 
-DOUBLEPOINT          : 
-EQUALS               : 
 FROM                 : 2
 ID                   : 1 2 2
 IMPORT               : 1 2
-LCORCHER             : 
-LPAREN               : 
-NUMBERS              : 
 NUMPY                : 1
-OPERADOR             : 
-POINT                : 
-RCORCHER             : 
-RESHAPE              : 
-RPAREN               : 
-SHAPE                : 
-SIZE                 : 
-ZEROS                : 
 error                : 
 
 Nonterminals, with rules where they appear

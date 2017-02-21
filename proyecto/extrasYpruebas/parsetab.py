@@ -5,7 +5,7 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = 'EQUALS ARREGLO ARREGLO_BI LPAREN RPAREN NUMBERS OPERADOR BOOLEAN POINT COMA RCORCHER LCORCHER DOUBLEPOINT ID AS FROM ZEROS RESHAPE IMPORT ARRAY NUMPY SHAPE SIZEexpression : IMPORT NUMPY AS ID\n                      | IMPORT ID FROM ID\n                       '
+_lr_signature = 'ID IMPORT AS NUMPY FROMexpression : IMPORT NUMPY AS ID\n                      | IMPORT ID FROM ID\n                       '
     
 _lr_action_items = {'FROM':([4,],[6,]),'AS':([3,],[5,]),'IMPORT':([0,],[1,]),'NUMPY':([1,],[3,]),'ID':([1,5,6,],[4,7,8,]),'$end':([2,7,8,],[0,-1,-2,]),}
 
@@ -26,6 +26,6 @@ for _k, _v in _lr_goto_items.items():
 del _lr_goto_items
 _lr_productions = [
   ("S' -> expression","S'",1,None,None,None),
-  ('expression -> IMPORT NUMPY AS ID','expression',4,'p_expresion_import','programaCompleto.py',72),
-  ('expression -> IMPORT ID FROM ID','expression',4,'p_expresion_import','programaCompleto.py',73),
+  ('expression -> IMPORT NUMPY AS ID','expression',4,'p_expresion_import','experimento.py',56),
+  ('expression -> IMPORT ID FROM ID','expression',4,'p_expresion_import','experimento.py',57),
 ]

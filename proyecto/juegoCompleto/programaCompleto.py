@@ -14,13 +14,14 @@ reserved = {
     'from': 'FROM',
 }
 
-tokens = ['EQUALS', 'ARREGLO', 'LPAREN', 'RPAREN',
+tokens = ['EQUALS', 'ARREGLO', 'ARREGLO_BI', 'LPAREN', 'RPAREN',
           'NUMBERS', 'OPERADOR', 'BOOLEAN', 'POINT', 'COMA', 'RCORCHER', 'LCORCHER', 'DOUBLEPOINT', 'ID'] + list(
     reserved.values())
 
 # Tokens
 t_EQUALS = r'='
 t_ARREGLO = r'\[([0-9],)*[0-9]\]'
+t_ARREGLO_BI = r'\[(\[([0-9],)*[0-9]\],)*\[([0-9],)*[0-9]\]\]'
 t_LPAREN = r'\('
 t_RPAREN = r'\)'
 t_NUMBERS = r'[0-9]+'
@@ -58,7 +59,7 @@ lexer = lex.lex()
 
 def nivel1():
     print("*" * 20 + "NIVEL 1" + "*" * 20)
-    print(" "*4+"Importación de la librería de numpy")
+    print(" "*4+"Importacion de la libreria Numpy")
 
     global validador
     validador = True
@@ -82,38 +83,34 @@ def nivel1():
         global validador
         validador = False
         if type(p).__name__ == "NoneType":
-            print("error lexico !")
+            print("Error LEXICO!")
         else:
 
-            print("error sintactico!!")
-
-
-
-
+            print("Error SINTACTICO!!")
 
 
     parser = yacc.yacc()
 
     while True:
         try:
-            s = input("ingrese: ")
+            s = raw_input("Ingrese sentencia: ")
         except EOFError:
             break
         if not s: continue
         result = parser.parse(s)
         if validador:
-            print("pasa al siguiente nivel")
+            print("Felicitaciones, Pasa al siguiente nivel!")
             print("")
             variable="paso"
             return True
         else:
             validador = True
-            print("error intente de nuevo!!")
+            print("Error. Intente de nuevo!")
 
 
 def nivel2():
     print("*" * 20 + "NIVEL 2" + "*" * 20)
-    print(" "*4+"creacion de un arreglo")
+    print(" "*4+"Creacion de arreglos")
 
 
 
@@ -140,38 +137,35 @@ def nivel2():
         global validador
         validador = False
         if type(p).__name__ == "NoneType":
-            print("error lexico !")
+            print("Error LEXICO!")
         else:
 
-            print("error sintactico!!")
+            print("Error SINTACTICO!")
 
     parser = yacc.yacc()
 
     while True:
         try:
-            s = input("ingrese: ")
+            s = raw_input("Ingrese sentencia: ")
         except EOFError:
             break
         if not s: continue
         result = parser.parse(s)
         if validador:
-            print("pasa al siguiente nivel")
+            print("Felicitaciones, pasa al siguiente nivel!")
             print("")
             variable="paso"
             return True
         else:
             validador = True
-            print("error intente de nuevo!!")
+            print("Error. Intente de nuevo!")
 
 def nivel3():
     print("*" * 20 + "NIVEL 3" + "*" * 20)
-    print(" "*4+"operadores")
-
-
+    print(" "*4+"Operaciones aritmeticas")
 
     global validador
     validador = True
-
     variable=""
 
     #------------- parte lexica -------------------------------------------------------------------------------
@@ -194,34 +188,32 @@ def nivel3():
         global validador
         validador = False
         if type(p).__name__ == "NoneType":
-            print("error lexico !")
+            print("Error LEXICO!")
         else:
 
-            print("error sintactico!!")
+            print("Error SINTACTICO!")
 
     parser = yacc.yacc()
 
     while True:
         try:
-            s = input("ingrese: ")
+            s = raw_input("Ingrese sentencia ")
         except EOFError:
             break
         if not s: continue
         result = parser.parse(s)
         if validador:
-            print("pasa al siguiente nivel")
+            print("Felicitaciones. Pasa al siguiente nivel!")
             print("")
             variable="paso"
             return True
         else:
             validador = True
-            print("error intente de nuevo!!")
+            print("Error. Intente de nuevo!")
 
 def nivel4():
     print("*" * 20 + "NIVEL 4" + "*" * 20)
-    print(" "*4+"arreglo bidimensional")
-
-
+    print(" "*4+"Creacion de arreglos bidimensionales")
 
     global validador
     validador = True
@@ -233,8 +225,8 @@ def nivel4():
 
     #------------------------ parte sintactica---------------------------------------------------------
     def p_expresion_arregloBi(p):
-        '''expression : ID EQUALS ID POINT ARRAY  LPAREN LCORCHER ARREGLO COMA ARREGLO RCORCHER RPAREN
-                      | ID POINT ARRAY  LPAREN LCORCHER ARREGLO COMA ARREGLO RCORCHER RPAREN
+        '''expression : ID EQUALS ID POINT ARRAY  LPAREN ARREGLO_BI RPAREN
+                      | ID POINT ARRAY  LPAREN ARREGLO_BI RPAREN
                        '''
 
         p[0] = ""
@@ -247,32 +239,32 @@ def nivel4():
         global validador
         validador = False
         if type(p).__name__ == "NoneType":
-            print("error lexico !")
+            print("Error LEXICO!")
         else:
 
-            print("error sintactico!!")
+            print("Error SINTACTICO!")
 
     parser = yacc.yacc()
 
     while True:
         try:
-            s = input("ingrese: ")
+            s = raw_input("Ingrese sentencia: ")
         except EOFError:
             break
         if not s: continue
         result = parser.parse(s)
         if validador:
-            print("pasa al siguiente nivel")
+            print("Felicitaciones, pasa al siguiente nivel!")
             print("")
             variable="paso"
             return True
         else:
             validador = True
-            print("error intente de nuevo!!")
+            print("Error. Intente de nuevo!")
 
 def nivel6():
     print("*" * 20 + "NIVEL 6" + "*" * 20)
-    print(" "*4+"indexacion")
+    print(" "*4+"Indexacion sobre matrices")
 
 
 
@@ -291,6 +283,13 @@ def nivel6():
                        | ID ARREGLO ARREGLO
                        | ID EQUALS ID ARREGLO
                        | ID EQUALS ID ARREGLO ARREGLO
+                       | ID LCORCHER NUMBERS RCORCHER
+                       | ID LCORCHER NUMBERS COMA NUMBERS RCORCHER
+                       | ID LCORCHER NUMBERS RCORCHER LCORCHER NUMBERS RCORCHER
+
+                       | ID EQUALS ID LCORCHER NUMBERS RCORCHER
+                       | ID EQUALS ID LCORCHER NUMBERS COMA NUMBERS RCORCHER
+                       | ID EQUALS ID LCORCHER NUMBERS RCORCHER LCORCHER NUMBERS RCORCHER
         '''
         p[0] = ""
         for i in range(1, len(p)):
@@ -302,32 +301,32 @@ def nivel6():
         global validador
         validador = False
         if type(p).__name__ == "NoneType":
-            print("error lexico !")
+            print("Error LEXICO!")
         else:
 
-            print("error sintactico!!")
+            print("Error SINTACTICO!")
 
     parser = yacc.yacc()
 
     while True:
         try:
-            s = input("ingrese: ")
+            s = raw_input("Ingrese sentencia: ")
         except EOFError:
             break
         if not s: continue
         result = parser.parse(s)
         if validador:
-            print("pasa al siguiente nivel")
+            print("Felicitaciones, pasa al siguiente nivel!")
             print("")
             variable="paso"
             return True
         else:
             validador = True
-            print("error intente de nuevo!!")
+            print("Error. Intente de nuevo!")
 
 def nivel7():
     print("*" * 20 + "NIVEL 7" + "*" * 20)
-    print(" "*4+"funcion zeros")
+    print(" "*4+"Uso de funcion ZEROS")
 
 
 
@@ -360,33 +359,33 @@ def nivel7():
         global validador
         validador = False
         if type(p).__name__ == "NoneType":
-            print("error lexico !")
+            print("Error LEXICO!")
         else:
 
-            print("error sintactico!!")
+            print("Error SINTACTICO!!")
 
     parser = yacc.yacc()
 
     while True:
         try:
-            s = input("ingrese: ")
+            s = input("Ingrese sentencia: ")
         except EOFError:
             break
         if not s: continue
         result = parser.parse(s)
         if validador:
-            print("pasa al siguiente nivel")
+            print("Felicitacioes, pasa al siguiente nivel!")
             print("")
             variable="paso"
             return True
         else:
             validador = True
-            print("error intente de nuevo!!")
+            print("Error. Intente de nuevo!")
 
 
 def nivel8():
-    print("*" * 20 + "NIVEL 8" + "*" * 20)
-    print(" "*4+"expresion booleana")
+    print("*" * 20 + "  NIVEL 8  " + "*" * 20)
+    print(" "*4+"Creacion de matriz booleana")
 
 
 
@@ -415,31 +414,31 @@ def nivel8():
         global validador
         validador = False
         if type(p).__name__ == "NoneType":
-            print("error lexico !")
+            print("Error LEXICO!")
         else:
-            print("error sintactico!!")
+            print("Error SINTACTICO!")
 
     parser = yacc.yacc()
 
     while True:
         try:
-            s = input("ingrese: ")
+            s = raw_input("ingrese: ")
         except EOFError:
             break
         if not s: continue
         result = parser.parse(s)
         if validador:
-            print("pasa al siguiente nivel")
+            print("Felicitaciones, pasa al siguiente nivel!")
             print("")
             variable="paso"
             return True
         else:
             validador = True
-            print("error intente de nuevo!!")
+            print("Error. Intente de nuevo!")
 
 def nivel9():
-    print("*" * 20 + "NIVEL 9" + "*" * 20)
-    print(" "*4+"funciones comunes (shape,reshape,size)")
+    print("*" * 20 + "  NIVEL 9  " + "*" * 20)
+    print(" "*4+"Funciones comunes (shape,reshape,size)")
 
 
 
@@ -472,32 +471,32 @@ def nivel9():
         global validador
         validador = False
         if type(p).__name__ == "NoneType":
-            print("error lexico !")
+            print("Error LEXICO!")
         else:
 
-            print("error sintactico!!")
+            print("Error SINTACTICO!")
 
     parser = yacc.yacc()
 
     while True:
         try:
-            s = input("ingrese: ")
+            s = raw_input("Ingrese sentencia: ")
         except EOFError:
             break
         if not s: continue
         result = parser.parse(s)
         if validador:
-            print("pasa al siguiente nivel")
+            print("Felicitaciones, pasa al siguiente nivel!")
             print("")
             variable="paso"
             return True
         else:
             validador = True
-            print("error intente de nuevo!!")
+            print("Error. Intente de nuevo!")
 
 def nivel11():
-    print("*" * 20 + "NIVEL 11" + "*" * 20)
-    print(" "*4+"slicing")
+    print("*" * 20 + "  NIVEL 11  " + "*" * 20)
+    print(" "*4+"Slicing")
 
 
 
@@ -531,28 +530,28 @@ def nivel11():
         global validador
         validador = False
         if type(p).__name__ == "NoneType":
-            print("error lexico !")
+            print("Error LEXICO!")
         else:
 
-            print("error sintactico!!")
+            print("Error SINTACTICO!")
 
     parser = yacc.yacc()
 
     while True:
         try:
-            s = input("ingrese: ")
+            s = raw_input("Ingrese sentencia: ")
         except EOFError:
             break
         if not s: continue
         result = parser.parse(s)
         if validador:
-            print("pasa al siguiente nivel")
+            print("Felicitaciones. Pasa al siguiente nivel!")
             print("")
             variable="paso"
             return True
         else:
             validador = True
-            print("error intente de nuevo!!")
+            print("Error. Intente de nuevo!")
 
 
 
@@ -564,12 +563,12 @@ while(bandera):
     opcion=""
     correcta=False
     while (not correcta):
-        print("=" * 20 + "bienvenidos" + "=" * 20)
+        print("=" * 20 + "  BIENVENIDOS  " + "=" * 20)
         print("1.- Empezar entrenamiento")
         print("2.- Salir")
-        opcion=str(input("ingrese una opcion:"))
+        opcion=str(raw_input("Ingrese una opcion: "))
         numeros=["1","2","3"]
-        if(opcion in numeros):
+        if(opcion.strip() in numeros):
             correcta=True
         else:
             print('')
@@ -587,15 +586,10 @@ while(bandera):
         level8 = nivel8()
         level9 = nivel9()
         level11 = nivel11()
-        print("felicidades ha completado el juego!!!")
+        print("Felicidades! Usted ha completado el juego!")
         print("******************************************************************")
         print("\n")
     elif opcion=="2":
         bandera = False
         print("")
-        print("el programa de entrenamiento se ha cerrado")
-
-
-
-
-
+        print("El programa de entrenamiento se ha cerrado.")
