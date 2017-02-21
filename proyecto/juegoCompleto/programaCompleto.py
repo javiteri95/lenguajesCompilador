@@ -71,6 +71,8 @@ def nivel1():
     def p_expresion_import(p):
         '''expression : IMPORT NUMPY AS ID
                       | IMPORT ID FROM ID
+                      |  IMPORT NUMPY
+                      | FROM ID IMPORT ID
                        '''
 
         if p[1] == "import":
