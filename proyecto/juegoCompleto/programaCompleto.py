@@ -1,5 +1,6 @@
 import ply.lex as lex
 import ply.yacc as yacc
+import warnings
 
 reserved = {
     'import': 'IMPORT',
@@ -84,7 +85,6 @@ def nivel1():
             print("error lexico !")
         else:
 
-            print(type(p))
             print("error sintactico!!")
 
 
@@ -101,7 +101,6 @@ def nivel1():
             break
         if not s: continue
         result = parser.parse(s)
-        print(result)
         if validador:
             print("pasa al siguiente nivel")
             print("")
@@ -129,6 +128,7 @@ def nivel2():
     #------------------------ parte sintactica---------------------------------------------------------
     def p_expresion_arreglo(p):
         '''expression : ID EQUALS ID POINT ARRAY LPAREN ARREGLO RPAREN
+                      | ID POINT ARRAY LPAREN ARREGLO RPAREN
                        '''
         p[0] = ""
         for i in range(1, len(p)):
@@ -143,7 +143,6 @@ def nivel2():
             print("error lexico !")
         else:
 
-            print(type(p))
             print("error sintactico!!")
 
     parser = yacc.yacc()
@@ -155,7 +154,6 @@ def nivel2():
             break
         if not s: continue
         result = parser.parse(s)
-        print(result)
         if validador:
             print("pasa al siguiente nivel")
             print("")
@@ -199,7 +197,6 @@ def nivel3():
             print("error lexico !")
         else:
 
-            print(type(p))
             print("error sintactico!!")
 
     parser = yacc.yacc()
@@ -211,7 +208,6 @@ def nivel3():
             break
         if not s: continue
         result = parser.parse(s)
-        print(result)
         if validador:
             print("pasa al siguiente nivel")
             print("")
@@ -238,6 +234,7 @@ def nivel4():
     #------------------------ parte sintactica---------------------------------------------------------
     def p_expresion_arregloBi(p):
         '''expression : ID EQUALS ID POINT ARRAY  LPAREN LCORCHER ARREGLO COMA ARREGLO RCORCHER RPAREN
+                      | ID POINT ARRAY  LPAREN LCORCHER ARREGLO COMA ARREGLO RCORCHER RPAREN
                        '''
 
         p[0] = ""
@@ -253,7 +250,6 @@ def nivel4():
             print("error lexico !")
         else:
 
-            print(type(p))
             print("error sintactico!!")
 
     parser = yacc.yacc()
@@ -265,7 +261,6 @@ def nivel4():
             break
         if not s: continue
         result = parser.parse(s)
-        print(result)
         if validador:
             print("pasa al siguiente nivel")
             print("")
@@ -294,6 +289,8 @@ def nivel6():
         '''
             expression : ID ARREGLO
                        | ID ARREGLO ARREGLO
+                       | ID EQUALS ID ARREGLO
+                       | ID EQUALS ID ARREGLO ARREGLO
         '''
         p[0] = ""
         for i in range(1, len(p)):
@@ -308,7 +305,6 @@ def nivel6():
             print("error lexico !")
         else:
 
-            print(type(p))
             print("error sintactico!!")
 
     parser = yacc.yacc()
@@ -320,7 +316,6 @@ def nivel6():
             break
         if not s: continue
         result = parser.parse(s)
-        print(result)
         if validador:
             print("pasa al siguiente nivel")
             print("")
@@ -368,7 +363,6 @@ def nivel7():
             print("error lexico !")
         else:
 
-            print(type(p))
             print("error sintactico!!")
 
     parser = yacc.yacc()
@@ -380,7 +374,6 @@ def nivel7():
             break
         if not s: continue
         result = parser.parse(s)
-        print(result)
         if validador:
             print("pasa al siguiente nivel")
             print("")
@@ -424,8 +417,6 @@ def nivel8():
         if type(p).__name__ == "NoneType":
             print("error lexico !")
         else:
-
-            print(type(p))
             print("error sintactico!!")
 
     parser = yacc.yacc()
@@ -437,7 +428,6 @@ def nivel8():
             break
         if not s: continue
         result = parser.parse(s)
-        print(result)
         if validador:
             print("pasa al siguiente nivel")
             print("")
@@ -467,6 +457,9 @@ def nivel9():
             expression : ID POINT SHAPE
                        | ID POINT SIZE
                        | ID POINT RESHAPE LPAREN NUMBERS COMA NUMBERS RPAREN
+                       | ID EQUALS ID POINT SHAPE
+                       | ID EQUALS ID POINT SIZE
+                       | ID EQUALS ID POINT RESHAPE LPAREN NUMBERS COMA NUMBERS RPAREN
         '''
 
         p[0] = ""
@@ -482,7 +475,6 @@ def nivel9():
             print("error lexico !")
         else:
 
-            print(type(p))
             print("error sintactico!!")
 
     parser = yacc.yacc()
@@ -494,7 +486,6 @@ def nivel9():
             break
         if not s: continue
         result = parser.parse(s)
-        print(result)
         if validador:
             print("pasa al siguiente nivel")
             print("")
@@ -525,6 +516,10 @@ def nivel11():
                        | ID LCORCHER NUMBERS DOUBLEPOINT NUMBERS RCORCHER
                        | ID LCORCHER NUMBERS DOUBLEPOINT NUMBERS DOUBLEPOINT RCORCHER
                        | ID LCORCHER NUMBERS DOUBLEPOINT NUMBERS DOUBLEPOINT NUMBERS RCORCHER
+                       | ID EQUALS ID LCORCHER NUMBERS DOUBLEPOINT RCORCHER
+                       | ID EQUALS ID LCORCHER NUMBERS DOUBLEPOINT NUMBERS RCORCHER
+                       | ID EQUALS ID LCORCHER NUMBERS DOUBLEPOINT NUMBERS DOUBLEPOINT RCORCHER
+                       | ID EQUALS ID LCORCHER NUMBERS DOUBLEPOINT NUMBERS DOUBLEPOINT NUMBERS RCORCHER
         '''
         p[0] = ""
         for i in range(1, len(p)):
@@ -539,7 +534,6 @@ def nivel11():
             print("error lexico !")
         else:
 
-            print(type(p))
             print("error sintactico!!")
 
     parser = yacc.yacc()
@@ -551,7 +545,6 @@ def nivel11():
             break
         if not s: continue
         result = parser.parse(s)
-        print(result)
         if validador:
             print("pasa al siguiente nivel")
             print("")
@@ -573,8 +566,7 @@ while(bandera):
     while (not correcta):
         print("=" * 20 + "bienvenidos" + "=" * 20)
         print("1.- Empezar entrenamiento")
-        print("2.- Scoreboard")
-        print("3.- Salir")
+        print("2.- Salir")
         opcion=str(input("ingrese una opcion:"))
         numeros=["1","2","3"]
         if(opcion in numeros):
@@ -598,7 +590,7 @@ while(bandera):
         print("felicidades ha completado el juego!!!")
         print("******************************************************************")
         print("\n")
-    elif opcion=="3":
+    elif opcion=="2":
         bandera = False
         print("")
         print("el programa de entrenamiento se ha cerrado")
