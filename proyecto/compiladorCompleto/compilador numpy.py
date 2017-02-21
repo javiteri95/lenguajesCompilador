@@ -10,7 +10,7 @@ reserved = {
 }
 
 tokens = ['EQUALS', 'ARREGLO', 'LPAREN', 'RPAREN', 'FUNCION',
-          'NUMBERS', 'OPERADOR', 'NUMPY', 'POINT', 'ARRAY', 'COMA','RCORCHER', 'LCORCHER', 'NP', 'VAR', 'ID', 'DOUBLEPOINT','BOOLEAN'] + list(
+          'NUMBERS', 'OPERADOR', 'NUMPY', 'POINT', 'ARRAY', 'COMA','RCORCHER', 'LCORCHER', 'NP', 'VAR', 'ID', 'DOUBLEPOINT'] + list(
     reserved.values())
 
 # Tokens
@@ -25,7 +25,7 @@ t_COMA = r','
 t_LCORCHER = r'\['
 t_RCORCHER = r'\]'
 t_DOUBLEPOINT = r':'
-t_BOOLEAN = r'>|<|==|!='
+#t_BOOLEAN = r'>|<|==|!='
 t_ignore_COMMENT = r'\#.*'
 
 def t_ID(t):
